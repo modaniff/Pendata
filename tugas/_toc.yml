@@ -7,6 +7,8 @@ root: intro
 chapters:
   - file: Business_Understanding
   - file: Data_Understanding
+    sections:
+      - file: data_iris
   - file: Data_Preparation
   - file: Modeling
   - file: Deployment
