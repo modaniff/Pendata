@@ -19,8 +19,10 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
+df = pd.read_csv("IRIS.csv")
+df.head()
+
 ------------------
 
 
@@ -28,8 +30,8 @@ import seaborn as sns
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
 [32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
-[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01msns[39;00m
+[32m      3[39m df = pd.read_csv([33m"[39m[33mIRIS.csv[39m[33m"[39m)
+[32m      4[39m df.head()
 
 [31mModuleNotFoundError[39m: No module named 'pandas'
 
