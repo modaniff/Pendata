@@ -177,14 +177,13 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                     Materi Penambangan Data
+                    Welcome to your Jupyter Book
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis (Business Understanding)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 2. Pemahaman Data (Data Understanding)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Fase 2. Pemahaman Data (Data Understanding)</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data (Data Preparation)</a></li>
@@ -375,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Fase 2. Pemahaman Data (Data Understanding)</h1>
+    <h1>Data Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -504,17 +503,75 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS.csv&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>Dimensi Dataset</strong></p>
 <p>Dataset ini memiliki 150 baris dan 5 kolom</p>
@@ -550,7 +607,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f5f3d02de7a18c7dac693c1303d83df3f1868d5f87f3bd4c2298572fff275714.png" src="_images/f5f3d02de7a18c7dac693c1303d83df3f1868d5f87f3bd4c2298572fff275714.png" />
+<img alt="_images/bcd1cfe727f6b77c68c4de6454a0b5c48b48d4e7ff10499d4d0f95a06e1449aa.png" src="_images/bcd1cfe727f6b77c68c4de6454a0b5c48b48d4e7ff10499d4d0f95a06e1449aa.png" />
 </div>
 </div>
 </section>
@@ -655,60 +712,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistik untuk sepal_length
-Jumlah Data      : 150
-Rata-rata        : 5.843333333333334
-Nilai Minimum    : 4.3
-Q1               : 5.1
-Median (Q2)      : 5.8
-Q3               : 6.4
-Nilai Maximum    : 7.9
-Kemencengan      : 0.314911
-Modus            : 5.0 dengan jumlah 10
-Standar Deviasi  : 0.828066
-Variansi         : 0.685694
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Ambil hanya kolom numerik (tanpa species)</span>
 
-
-Statistik untuk sepal_width
-Jumlah Data      : 150
-Rata-rata        : 3.0540000000000003
-Nilai Minimum    : 2.0
-Q1               : 2.8
-Median (Q2)      : 3.0
-Q3               : 3.3
-Nilai Maximum    : 4.4
-Kemencengan      : 0.334053
-Modus            : 3.0 dengan jumlah 26
-Standar Deviasi  : 0.433594
-Variansi         : 0.188004
-
-
-Statistik untuk petal_length
-Jumlah Data      : 150
-Rata-rata        : 3.758666666666666
-Nilai Minimum    : 1.0
-Q1               : 1.6
-Median (Q2)      : 4.35
-Q3               : 5.1
-Nilai Maximum    : 6.9
-Kemencengan      : -0.274464
-Modus            : 1.5 dengan jumlah 14
-Standar Deviasi  : 1.76442
-Variansi         : 3.113179
-
-
-Statistik untuk petal_width
-Jumlah Data      : 150
-Rata-rata        : 1.1986666666666668
-Nilai Minimum    : 0.1
-Q1               : 0.3
-Median (Q2)      : 1.3
-Q3               : 1.8
-Nilai Maximum    : 2.5
-Kemencengan      : -0.104997
-Modus            : 0.2 dengan jumlah 28
-Standar Deviasi  : 0.763161
-Variansi         : 0.582414
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
 </pre></div>
 </div>
 </div>
@@ -1207,9 +1219,10 @@ D(i,j) = \frac{1}{p} \sum_{k=1}^{p} d_{ijk}
 </ul>
 </li>
 </ul>
+<p><em>(Screenshot: Tampilan Edit Domain dengan Species sebagai Class)</em></p>
 </section>
 <section id="id1">
-<h3><img alt="image-3.png" src="_images/image-3.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><img alt="image-3.png" src="attachment:image-3.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p><strong>3. Distances</strong></p>
 <ul class="simple">
 <li><p>Pilih metode jarak:</p>
@@ -1220,29 +1233,30 @@ D(i,j) = \frac{1}{p} \sum_{k=1}^{p} d_{ijk}
 </li>
 <li><p>Orange akan menghitung matriks jarak antar data</p></li>
 </ul>
+<p><em>(Screenshot: Widget Distances menunjukkan Distance Matrix)</em></p>
 </section>
 <section id="id2">
-<h3><img alt="image.png" src="_images/image.png" /><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<h3><img alt="image.png" src="attachment:image.png" /><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 </section>
 <section id="id3">
-<h3><img alt="image-2.png" src="_images/image-2.png" /><a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<h3><img alt="image-2.png" src="attachment:image-2.png" /><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p><strong>4. Visualisasi</strong></p>
 </section>
 <section id="id4">
-<h3>Scatter Plot<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<p><img alt="image-4.png" src="_images/image-4.png" /></p>
+<h3>Scatter Plot<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><img alt="image-4.png" src="attachment:image-4.png" /></p>
 </section>
 <section id="hierarchical-clustering">
-<h3>Hierarchical Clustering<a class="headerlink" href="#hierarchical-clustering" title="Link to this heading"></a></h3>
-<p><img alt="image-5.png" src="_images/image-5.png" /></p>
+<h3>Hierarchical Clustering<a class="headerlink" href="#hierarchical-clustering" title="Link to this heading">#</a></h3>
+<p><img alt="image-5.png" src="attachment:image-5.png" /></p>
 </section>
 <section id="distance-map">
-<h3>Distance Map<a class="headerlink" href="#distance-map" title="Link to this heading"></a></h3>
-<p><img alt="image-6.png" src="_images/image-6.png".png" /></p>
+<h3>Distance Map<a class="headerlink" href="#distance-map" title="Link to this heading">#</a></h3>
+<p><img alt="image-6.png" src="attachment:image-6.png" /></p>
 </section>
 </section>
 <section id="contoh-perhitungan-gower-distance-python">
-<h2>Contoh Perhitungan Gower Distance (Python)<a class="headerlink" href="#contoh-perhitungan-gower-distance-python" title="Link to this heading"></a></h2>
+<h2>Contoh Perhitungan Gower Distance (Python)<a class="headerlink" href="#contoh-perhitungan-gower-distance-python" title="Link to this heading">#</a></h2>
 <p>Berikut contoh sederhana menghitung <strong>Gower Distance</strong> pada dataset Iris menggunakan Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
