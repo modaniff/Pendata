@@ -2,15 +2,11 @@ format: jb-book
 root: intro
 chapters:
   - file: Business_Understanding
-    title: Fase 1. Pemahaman Bisnis (Business Understanding)
+    title: Fase 1. Pemahaman Bisnis
   - file: Data_Understanding
-    title: Fase 2. Pemahaman Data (Data Understanding)
+    title: Fase 2. Pemahaman Data
     sections:
       - file: "Proyek _Missing_Values_Inputation_Materi _Normalisasi_data"
-        title: Proyek Missing Values dan Normalisasi
+        title: Proyek Missing Values & Normalisasi
   - file: Data_Preparation
-    title: Fase 3. Persiapan Data (Data Preparation)
-  - file: Modeling
-    title: Fase 4. Pemodelan (Modeling)
-  - file: Deployment
-    title: Fase 6. Implementasi (Deployment)
+    title: Fase 3. Persiapan Data
