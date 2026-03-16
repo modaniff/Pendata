@@ -177,16 +177,14 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Materi Penambangan Data
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis (Business Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Fase 2. Pemahaman Data (Data Understanding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Proyek _Missing_Values_Inputation_Materi _Normalisasi_data.html">Proyek Missing Values Inputation + Materi Normalisasi data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data (Data Preparation)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan (Modeling)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi (Deployment)</a></li>
@@ -424,7 +422,7 @@ document.write(`
 <p>Dataset yang digunakan pada tugas ini terdiri dari atribut <strong>tinggi</strong> dan <strong>berat</strong>.
 Pada data berikut terdapat missing value pada atribut berat.</p>
 <p>Pada Excel</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="_images/dataset.png" /></p>
 <p>Pada Python</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -513,7 +511,7 @@ menggunakan Microsoft Excel.</p>
 <p>X = tinggi data yang memiliki missing value</p>
 <p>Rumus Excel:</p>
 <p><strong>=ABS(B4-<span class="math notranslate nohighlight">\(B\)</span>5)</strong></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="_images/distance.png" /></p>
 </li>
 <li><p>Menghitung Weight<br />
 Weight dihitung untuk memberikan bobot pada setiap data berdasarkan jaraknya.</p>
@@ -521,7 +519,7 @@ Weight dihitung untuk memberikan bobot pada setiap data berdasarkan jaraknya.</p
 <p>Weight = 1 / Distance</p>
 <p>Rumus Excel:</p>
 <p><strong>=1/D4</strong></p>
-<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
+<p><img alt="image-2.png" src="_images/weight.png" /></p>
 </li>
 <li><p>Menghitung Weight × Berat
 Nilai ini digunakan untuk menghitung kontribusi setiap tetangga terhadap estimasi nilai.</p>
@@ -529,7 +527,7 @@ Nilai ini digunakan untuk menghitung kontribusi setiap tetangga terhadap estimas
 <p>Weight × Berat = Weight * Berat</p>
 <p>Rumus Excel:</p>
 <p><strong>=E4*C4</strong></p>
-<p><img alt="image-3.png" src="attachment:image-3.png" /></p>
+<p><img alt="image-3.png" src="_images/weightxberat.png" /></p>
 </li>
 <li><p>Menghitung hasil estimasi</p></li>
 </ol>
@@ -540,7 +538,7 @@ Nilai ini digunakan untuk menghitung kontribusi setiap tetangga terhadap estimas
 <p>Hasil perhitungan:</p>
 <p>(13 + 5 + 7) / (0.2 + 0.0667 + 0.1)
 = 68.18</p>
-<p><img alt="image-4.png" src="attachment:image-4.png" /></p>
+<p><img alt="image-4.png" src="_images/estimasi.png" /></p>
 </section>
 <section id="implementasi-wknn-menggunakan-python">
 <h2>Implementasi WKNN Menggunakan Python<a class="headerlink" href="#implementasi-wknn-menggunakan-python" title="Link to this heading">#</a></h2>
@@ -927,7 +925,7 @@ seperti KNN, SVM, dan Neural Network.</p>
 <li><p>Decimal Scaling</p></li>
 </ol>
 <p>Disini saya membuat tabel baru dengan isi :</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="_images/tabelbaru.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -1048,7 +1046,7 @@ seperti KNN, SVM, dan Neural Network.</p>
 </tbody>
 </table>
 </div>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p><img alt="image.png" src="_images/tabel normalisasi.png" /></p>
 </section>
 <section id="normaliasi-python">
 <h3>Normaliasi Python<a class="headerlink" href="#normaliasi-python" title="Link to this heading">#</a></h3>
