@@ -7,11 +7,12 @@ root: intro
 chapters:
   - file: Business_Understanding
   - file: Data_Understanding
+    sections:
+      - file: tugas/main
+        title: Tugas
+        sections:
+          - file: "tugas/Proyek _Missing_Values_Inputation_Materi _Normalisasi_data"
+            title: Missing Values dan Normalisasi
   - file: Data_Preparation
   - file: Modeling
   - file: Deployment
-  - file: tugas/main
-    sections:
-    - file: tugas/missing_values-normalisasi
-      sections:
-        - file : tugas/Proyek _Missing_Values_Inputation_Materi _Normalisasi_data
