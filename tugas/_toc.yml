@@ -10,3 +10,7 @@ chapters:
         title: Proyek Missing Values & Normalisasi
   - file: Data_Preparation
     title: Fase 3. Persiapan Data
+  - file: Modeling
+    title: Fase 4. Pemodelan
+  - file: Deployment
+    title: Fase 6. Implementasi
