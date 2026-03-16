@@ -1,18 +1,16 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
 root: intro
-
 chapters:
   - file: Business_Understanding
+    title: Fase 1. Pemahaman Bisnis (Business Understanding)
   - file: Data_Understanding
+    title: Fase 2. Pemahaman Data (Data Understanding)
     sections:
-      - file: tugas/main
-        title: Tugas
-        sections:
-          - file: "tugas/Proyek _Missing_Values_Inputation_Materi _Normalisasi_data"
-            title: Missing Values dan Normalisasi
+      - file: "Proyek _Missing_Values_Inputation_Materi _Normalisasi_data"
+        title: Proyek Missing Values dan Normalisasi
   - file: Data_Preparation
+    title: Fase 3. Persiapan Data (Data Preparation)
   - file: Modeling
+    title: Fase 4. Pemodelan (Modeling)
   - file: Deployment
+    title: Fase 6. Implementasi (Deployment)
