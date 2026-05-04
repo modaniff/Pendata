@@ -1,7 +1,7 @@
 Traceback (most recent call last):
   File "/usr/local/python/3.12.1/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/codespace/.local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
@@ -10,49 +10,28 @@ Traceback (most recent call last):
   File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import pandas as pd
-from scipy import stats
 
 df = pd.read_csv("IRIS.csv")
+df.head()
 
-# Ambil hanya kolom numerik (tanpa species)
-df_numeric = df.select_dtypes(include=['int64','float64'])
-
-for col in df_numeric.columns:
-    print("Statistik untuk", col,)
-    print("Jumlah Data      :", df[col].count())
-    print("Rata-rata        :", df[col].mean())
-    print("Nilai Minimum    :", df[col].min())
-    print("Q1               :", df[col].quantile(0.25))
-    print("Median (Q2)      :", df[col].quantile(0.5))
-    print("Q3               :", df[col].quantile(0.75))
-    print("Nilai Maximum    :", df[col].max())
-    print("Kemencengan      :", round(df[col].skew(), 6))
-
-    mode = stats.mode(df[col], keepdims=True)
-    print("Modus            :", mode.mode[0], "dengan jumlah", mode.count[0])
-
-    print("Standar Deviasi  :", round(df[col].std(), 6))
-    print("Variansi         :", round(df[col].var(), 6))
-    print("\n")
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 2[39m
-[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
-[32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m stats
-[32m      4[39m df = pd.read_csv([33m"[39m[33mIRIS.csv[39m[33m"[39m)
-[32m      6[39m [38;5;66;03m# Ambil hanya kolom numerik (tanpa species)[39;00m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m      3[39m df = pd.read_csv([33m"[39m[33mIRIS.csv[39m[33m"[39m)
+[32m      4[39m df.head()
 
-[31mModuleNotFoundError[39m: No module named 'scipy'
+[31mModuleNotFoundError[39m: No module named 'pandas'
 

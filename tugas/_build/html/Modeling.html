@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Fase 4. Pemodelan (Modeling) &#8212; Penambangan Data</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Modeling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -158,34 +163,30 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Materi Penambangan Data
+                    Welcome to your Jupyter Book
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis (Business Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Fase 2. Pemahaman Data (Data Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Proyek _Missing_Values_Inputation_Materi _Normalisasi_data.html">Proyek Missing Values Inputation + Materi Normalisasi data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data (Data Preparation)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 4. Pemodelan (Modeling)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi (Deployment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Proyek%20_Missing_Values_Inputation_Materi%20_Normalisasi_data.html">Missing Value</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 4. Pemodelan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS_Pendat.html">UTS Analisa Data Kesuburan Tanah</a></li>
+
+
 </ul>
 
     </div>
@@ -215,9 +216,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -358,9 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -429,80 +430,80 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fase-4-pemodelan-modeling">
-<h1>Fase 4. Pemodelan (Modeling)<a class="headerlink" href="#fase-4-pemodelan-modeling" title="Link to this heading">#</a></h1>
+<h1>Fase 4. Pemodelan (Modeling)<a class="headerlink" href="#fase-4-pemodelan-modeling" title="Permalink to this heading">#</a></h1>
 <p>Pada fase ini, berbagai teknik pemodelan dipilih dan diterapkan, kemudian parameternya disesuaikan agar mendapatkan hasil yang optimal. Biasanya terdapat beberapa teknik yang dapat digunakan untuk jenis masalah data mining yang sama. Beberapa teknik juga memiliki persyaratan tertentu terhadap bentuk data, sehingga sering kali perlu kembali ke tahap persiapan data.</p>
 <hr class="docutils" />
 <section id="memilih-teknik-pemodelan">
-<h2>4.1 Memilih Teknik Pemodelan<a class="headerlink" href="#memilih-teknik-pemodelan" title="Link to this heading">#</a></h2>
+<h2>4.1 Memilih Teknik Pemodelan<a class="headerlink" href="#memilih-teknik-pemodelan" title="Permalink to this heading">#</a></h2>
 <section id="tugas">
-<h3>4.1.1 Tugas<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h3>
+<h3>4.1.1 Tugas<a class="headerlink" href="#tugas" title="Permalink to this heading">#</a></h3>
 <p>Sebagai langkah awal dalam pemodelan, pilih teknik pemodelan yang akan digunakan. Meskipun alat (tool) mungkin sudah dipilih pada fase Business Understanding, tahap ini berfokus pada teknik pemodelan yang spesifik.</p>
 </section>
 <section id="hasil">
-<h3>4.1.2 Hasil<a class="headerlink" href="#hasil" title="Link to this heading">#</a></h3>
+<h3>4.1.2 Hasil<a class="headerlink" href="#hasil" title="Permalink to this heading">#</a></h3>
 <section id="teknik-pemodelan">
-<h4>4.1.2.1 Teknik Pemodelan<a class="headerlink" href="#teknik-pemodelan" title="Link to this heading">#</a></h4>
+<h4>4.1.2.1 Teknik Pemodelan<a class="headerlink" href="#teknik-pemodelan" title="Permalink to this heading">#</a></h4>
 <p>Dokumentasikan teknik pemodelan yang digunakan.</p>
 </section>
 <section id="asumsi-pemodelan">
-<h4>4.1.2.2 Asumsi Pemodelan<a class="headerlink" href="#asumsi-pemodelan" title="Link to this heading">#</a></h4>
+<h4>4.1.2.2 Asumsi Pemodelan<a class="headerlink" href="#asumsi-pemodelan" title="Permalink to this heading">#</a></h4>
 <p>Banyak model memiliki asumsi terhadap data. Catat semua asumsi yang digunakan dalam pemodelan.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="menyusun-desain-pengujian">
-<h2>4.2 Menyusun Desain Pengujian<a class="headerlink" href="#menyusun-desain-pengujian" title="Link to this heading">#</a></h2>
+<h2>4.2 Menyusun Desain Pengujian<a class="headerlink" href="#menyusun-desain-pengujian" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>4.2.1 Tugas<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>4.2.1 Tugas<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Sebelum membangun model, perlu dibuat prosedur atau mekanisme untuk menguji kualitas dan validitas model.</p>
 </section>
 <section id="id2">
-<h3>4.2.2 Hasil<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>4.2.2 Hasil<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <section id="desain-pengujian">
-<h4>4.2.2.1 Desain Pengujian<a class="headerlink" href="#desain-pengujian" title="Link to this heading">#</a></h4>
+<h4>4.2.2.1 Desain Pengujian<a class="headerlink" href="#desain-pengujian" title="Permalink to this heading">#</a></h4>
 <p>Jelaskan rencana untuk proses pelatihan (training), pengujian (testing), dan evaluasi model.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="membangun-model">
-<h2>4.3 Membangun Model<a class="headerlink" href="#membangun-model" title="Link to this heading">#</a></h2>
+<h2>4.3 Membangun Model<a class="headerlink" href="#membangun-model" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3>4.3.1 Tugas<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>4.3.1 Tugas<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Menjalankan alat pemodelan pada dataset yang telah dipersiapkan untuk menghasilkan satu atau lebih model.</p>
 </section>
 <section id="id4">
-<h3>4.3.2 Hasil<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>4.3.2 Hasil<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <section id="pengaturan-parameter">
-<h4>4.3.2.1 Pengaturan Parameter<a class="headerlink" href="#pengaturan-parameter" title="Link to this heading">#</a></h4>
+<h4>4.3.2.1 Pengaturan Parameter<a class="headerlink" href="#pengaturan-parameter" title="Permalink to this heading">#</a></h4>
 <p>Sebagian besar teknik pemodelan memiliki parameter yang dapat disesuaikan. Cantumkan parameter yang digunakan beserta nilainya dan alasan pemilihannya.</p>
 </section>
 <section id="model">
-<h4>4.3.2.2 Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h4>
+<h4>4.3.2.2 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h4>
 <p>Model yang dihasilkan dari proses pemodelan.</p>
 </section>
 <section id="deskripsi-model">
-<h4>4.3.2.3 Deskripsi Model<a class="headerlink" href="#deskripsi-model" title="Link to this heading">#</a></h4>
+<h4>4.3.2.3 Deskripsi Model<a class="headerlink" href="#deskripsi-model" title="Permalink to this heading">#</a></h4>
 <p>Jelaskan hasil model, termasuk interpretasi model dan kendala yang ditemukan dalam memahami hasilnya.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="evaluasi-model">
-<h2>4.4 Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h2>
+<h2>4.4 Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Permalink to this heading">#</a></h2>
 <section id="id5">
-<h3>4.4.1 Tugas<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>4.4.1 Tugas<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Menafsirkan model berdasarkan pengetahuan domain, kriteria keberhasilan, dan desain pengujian yang telah ditentukan. Keberhasilan model harus dinilai secara teknis dan dibandingkan dengan model lainnya.</p>
 </section>
 <section id="id6">
-<h3>4.4.2 Hasil<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>4.4.2 Hasil<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <section id="penilaian-model">
-<h4>4.4.2.1 Penilaian Model<a class="headerlink" href="#penilaian-model" title="Link to this heading">#</a></h4>
+<h4>4.4.2.1 Penilaian Model<a class="headerlink" href="#penilaian-model" title="Permalink to this heading">#</a></h4>
 <p>Ringkasan hasil evaluasi, termasuk kualitas model (misalnya akurasi) dan peringkat model jika terdapat lebih dari satu.</p>
 </section>
 <section id="pengaturan-parameter-yang-direvisi">
-<h4>4.4.2.2 Pengaturan Parameter yang Direvisi<a class="headerlink" href="#pengaturan-parameter-yang-direvisi" title="Link to this heading">#</a></h4>
+<h4>4.4.2.2 Pengaturan Parameter yang Direvisi<a class="headerlink" href="#pengaturan-parameter-yang-direvisi" title="Permalink to this heading">#</a></h4>
 <p>Jika diperlukan, catat perubahan parameter yang dilakukan untuk meningkatkan kinerja model.</p>
 </section>
 </section>
@@ -633,7 +634,7 @@ By Mohammad Dani Ferdiansyah
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

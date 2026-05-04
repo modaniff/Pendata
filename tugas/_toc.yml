@@ -5,12 +5,15 @@ chapters:
     title: Fase 1. Pemahaman Bisnis
   - file: Data_Understanding
     title: Fase 2. Pemahaman Data
-    sections:
-      - file: "Proyek _Missing_Values_Inputation_Materi _Normalisasi_data"
-        title: Proyek Missing Values & Normalisasi
+  - file: Proyek _Missing_Values_Inputation_Materi _Normalisasi_data
+    title: Proyek Missing Values & Normalisasi
   - file: Data_Preparation
     title: Fase 3. Persiapan Data
   - file: Modeling
     title: Fase 4. Pemodelan
   - file: Deployment
     title: Fase 6. Implementasi
+  - file: UTS_Pendat
+    title: UTS Pendat
+  - file: TugasNaiveBayes
+    title: Tugas Naive Bayes
