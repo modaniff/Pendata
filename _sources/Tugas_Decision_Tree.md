@@ -80,7 +80,7 @@ Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data ter
 
 ## Pembagian Data dengan Table Partitioner
 
-<img src="_static/Decision_Tree_Predictor.png" alt="Table Partitioner" width="100%">
+<img src="_static/Table_Partitioner_Tree.png" alt="Table Partitioner" width="100%">
 
 Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (*training set*) dan data uji (*testing set*) menggunakan node **Table Partitioner**.
 
