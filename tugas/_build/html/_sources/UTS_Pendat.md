@@ -82,7 +82,7 @@ Node pertama yang saya gunakan adalah **Excel Reader**. Saya pakai node ini kare
 
 Setelah saya konfigurasi path file-nya, node ini menghasilkan tabel data mentah berisi 2.000 baris dengan 11 kolom, yaitu 10 fitur dan 1 kolom label. Dari sini saya bisa lihat bahwa beberapa kolom masih ada yang kosong, tanda dataset memang punya missing value yang perlu ditangani.
 
-![Tampilan node Excel Reader setelah berhasil membaca dataset kesuburan tanah](Assets/UTS/Read-Data-CSV.png)
+![Tampilan node Excel Reader setelah berhasil membaca dataset kesuburan tanah](_static/ExcellReader.png)
 
 Dari gambar di atas, saya bisa konfirmasi bahwa data sudah berhasil masuk ke KNIME. Semua kolom fitur seperti pH Tanah, N Total, P Tersedia, dan lainnya sudah terbaca dengan tipe data yang sesuai.
 
@@ -107,7 +107,7 @@ Kolom yang saya pertahankan di panel **Includes**:
 - Bulk Density (g/cm3)
 - Label
 
-![Konfigurasi node Column Filter, kolom ID sudah dipindah ke panel Excludes](Assets/UTS/Column-Filter.png)
+![Konfigurasi node Column Filter, kolom ID sudah dipindah ke panel Excludes](_static/coluum2.png)
 
 Dari gambar di atas terlihat kolom `ID` sudah berhasil saya pindahkan ke panel **Excludes**, jadi tidak akan ikut ke proses selanjutnya.
 
@@ -129,7 +129,7 @@ Untuk mengisinya, saya menggunakan dua pendekatan:
 - Kolom **numerik**: saya isi dengan nilai **mean** (rata-rata) dari kolom tersebut.
 - Kolom **kategorikal** yaitu Tekstur Tanah: saya isi dengan nilai yang paling sering muncul (**most frequent value**).
 
-![Konfigurasi node Missing Value untuk menangani data kosong](Assets/UTS/missing-value.png)
+![Konfigurasi node Missing Value untuk menangani data kosong](_static/misiingvalue.png)
 
 Setelah node ini selesai dijalankan, semua baris data sudah bersih dari nilai kosong dan siap saya proses ke tahap berikutnya.
 
@@ -154,7 +154,7 @@ Saya perlu melakukan ini karena algoritma KNN bekerja dengan menghitung jarak an
 | 1 | 0 | 0 | ... |
 | 0 | 1 | 0 | ... |
 
-![Konfigurasi node One to Many untuk mengubah Tekstur Tanah menjadi kolom biner](Assets/UTS/one-to-many.png)
+![Konfigurasi node One to Many untuk mengubah Tekstur Tanah menjadi kolom biner](_static/one to money.png)
 
 Dengan begitu, fitur Tekstur Tanah sudah bisa ikut masuk ke perhitungan jarak dalam KNN.
 
@@ -174,7 +174,7 @@ Kenapa saya perlu normalisasi? Karena setiap fitur punya satuan dan rentang nila
 
 Setelah normalisasi, semua nilai fitur berada di rentang 0 sampai 1, jadi pengaruh setiap fitur lebih seimbang.
 
-![Konfigurasi node Normalizer dengan metode Min-Max](Assets/UTS/normalizer.png)
+![Konfigurasi node Normalizer dengan metode Min-Max](_static/normaliser.png)
 
 ---
 
@@ -191,7 +191,7 @@ Dari total 2.000 data, hasil pembagiannya adalah:
 - **1.600 data** masuk ke partisi pertama sebagai data latih (training)
 - **400 data** masuk ke partisi kedua sebagai data uji (testing)
 
-![Konfigurasi Table Partitioner dengan pembagian 80% training dan 20% testing](Assets/UTS/table-partioner-80%.png)
+![Konfigurasi Table Partitioner dengan pembagian 80% training dan 20% testing](_static/Tabel Patrioner.png)
 
 Saya membagi data seperti ini agar saat saya evaluasi model nanti, data yang diuji adalah data yang belum pernah dilihat model, sehingga hasilnya lebih objektif.
 
@@ -213,7 +213,7 @@ $$
 d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
 $$
 
-![Konfigurasi node K Nearest Neighbor dengan k = 5](Assets/UTS/knn.png)
+![Konfigurasi node K Nearest Neighbor dengan k = 5](_static/knn.png)
 
 Setelah node ini selesai, output-nya berupa tabel lengkap dengan tambahan kolom `Class [kNN]` yang berisi hasil prediksi kelas untuk setiap baris data uji.
 
@@ -230,7 +230,7 @@ Dari node ini saya mendapatkan:
 
 Perlu saya catat bahwa di KNIME, F1-Score ditampilkan dengan nama **F-measure**, bukan F1-Score seperti yang umum dikenal.
 
-![Output node Scorer menampilkan confusion matrix dan statistik evaluasi](Assets/UTS/scorer.png)
+![Output node Scorer menampilkan confusion matrix dan statistik evaluasi](_static/scorer.png)
 
 ---
 
@@ -244,7 +244,7 @@ Kolom yang ditampilkan:
 - F-measure
 - Accuracy
 
-![Tampilan Table View menampilkan hasil metrik evaluasi akhir](Assets/UTS/table-view.png)
+![Tampilan Table View menampilkan hasil metrik evaluasi akhir](_static/tabel view.png)
 
 ---
 
