@@ -47,7 +47,7 @@ Dengan menggunakan Gain Ratio, algoritma C4.5 mampu menghasilkan struktur pohon 
 
 ## Raw Data Perhitungan C4.5 Tennis
 
-![Data Raw](_static/DataRawTree.png)
+<img src="_static/DataRawTree.png" alt="Data Raw" width="100%">
 
 Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputusan bermain tenis. Di dalam dataset ini terdapat 14 baris rekaman dengan atribut prediktor: Outlook, Temp., Humidity, dan Wind, serta satu atribut target yaitu Play Tennis.
 
@@ -72,7 +72,7 @@ Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputu
 
 ## Impor Data ke KNIME
 
-![Excel Reader](_static/DataRawTree.png)
+<img src="_static/DataRawTree.png" alt="Excel Reader" width="100%">
 
 Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data tersebut. Setelah proses pembacaan data selesai, seluruh atribut berhasil terbaca dengan baik dan bertipe kategorikal (String). Dataset kemudian siap digunakan untuk proses pembentukan model Decision Tree.
 
@@ -80,7 +80,7 @@ Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data ter
 
 ## Pembagian Data dengan Table Partitioner
 
-![Table Partitioner](_static/Tabel Patrioner.png)
+<img src="_static/Tabel_Partitioner.png" alt="Table Partitioner" width="100%">
 
 Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (*training set*) dan data uji (*testing set*) menggunakan node **Table Partitioner**.
 
@@ -90,7 +90,7 @@ Pada workflow ini, pembagian data dilakukan dengan metode *relative partitioning
 
 ## Pembelajaran Model dengan Decision Tree Learner
 
-![Decision Tree Learner](_static/Decision Tree Learner.png)
+<img src="_static/Decision_Tree_Learner.png" alt="Decision Tree Learner" width="100%">
 
 Data latih kemudian dihubungkan ke node **Decision Tree Learner**. Pada node ini saya memilih:
 
@@ -146,7 +146,7 @@ Node ini kemudian membentuk model pohon keputusan berdasarkan atribut dengan nil
 
 ## Visualisasi Pohon Keputusan
 
-![Decision Tree View](_static/Decision Tree View.png)
+<img src="_static/Decision_Tree_View.png" alt="Decision Tree View" width="100%">
 
 Untuk melihat hasil model secara visual, saya menggunakan node **Decision Tree View (JavaScript)**. Node ini menampilkan struktur pohon keputusan yang terbentuk berdasarkan hasil pelatihan model.
 
@@ -163,7 +163,7 @@ Visualisasi ini menunjukkan bagaimana algoritma memilih atribut dengan nilai Gai
 
 ## Prediksi menggunakan Decision Tree Predictor
 
-![Decision Tree Predictor](_static/Decision Tree Predictor.png)
+<img src="_static/Decision_Tree_Predictor.png" alt="Decision Tree Predictor" width="100%">
 
 Setelah model selesai dibangun, saya menggunakan node **Decision Tree Predictor** untuk melakukan prediksi terhadap data testing.
 
@@ -176,7 +176,7 @@ Node ini menerima dua input:
 
 ## Hasil Prediksi
 
-![Hasil Decision Tree](_static/Hasil Prediksi.png)
+<img src="_static/Hasil_Prediksi.png" alt="Hasil Prediksi" width="100%">
 
 Tabel di atas menampilkan hasil keluaran dari node **Decision Tree Predictor**. Pada hasil tersebut terdapat penambahan kolom baru bernama **Prediction (Play Tennis)** yang berisi hasil prediksi algoritma terhadap data testing.
 
@@ -191,7 +191,7 @@ Dari hasil tersebut terlihat bahwa model berhasil mengikuti pola klasifikasi yan
 
 ## Evaluasi Akurasi dengan Scorer
 
-![Accuracy Statistics Scorer](_static/AccuracyStatictsScorer.png)
+<img src="_static/Accuracy_Statistics_Scorer.png" alt="Accuracy Statistics Scorer" width="100%">
 
 Sebagai tahap akhir evaluasi model, saya menggunakan node **Scorer** untuk mengukur performa klasifikasi yang dihasilkan oleh algoritma Decision Tree.
 
@@ -218,12 +218,4 @@ Berdasarkan hasil evaluasi menggunakan node **Scorer**, model berhasil melakukan
 
 Dari hasil tersebut kemudian dihitung nilai **Accuracy** untuk mengetahui tingkat ketepatan model secara keseluruhan.
 
-Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset *Play Tennis*.cd /workspaces/Pendata/tugas
-rm -rf _build
-jupyter-book build .
-ghp-import -n -p -f _build/html
-
-cd /workspaces/Pendata
-git add tugas
-git commit -m "perbaiki gambar decision tree"
-git push -f origin main
+Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset *Play Tennis*.

@@ -456,7 +456,7 @@ Merupakan perbandingan antara Information Gain dan Split Information.</p></li>
 <hr class="docutils" />
 <section id="raw-data-perhitungan-c4-5-tennis">
 <h2>Raw Data Perhitungan C4.5 Tennis<a class="headerlink" href="#raw-data-perhitungan-c4-5-tennis" title="Permalink to this heading">#</a></h2>
-<p><img alt="Data Raw" src="_images/DataRawTree.png" /></p>
+<img src="_static/DataRawTree.png" alt="Data Raw" width="100%">
 <p>Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputusan bermain tenis. Di dalam dataset ini terdapat 14 baris rekaman dengan atribut prediktor: Outlook, Temp., Humidity, dan Wind, serta satu atribut target yaitu Play Tennis.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -559,20 +559,20 @@ Merupakan perbandingan antara Information Gain dan Split Information.</p></li>
 <hr class="docutils" />
 <section id="impor-data-ke-knime">
 <h2>Impor Data ke KNIME<a class="headerlink" href="#impor-data-ke-knime" title="Permalink to this heading">#</a></h2>
-<p><img alt="Excel Reader" src="_images/DataRawTree.png" /></p>
+<img src="_static/DataRawTree.png" alt="Excel Reader" width="100%">
 <p>Pada KNIME, saya menggunakan node <strong>Excel Reader</strong> untuk mengimpor file data tersebut. Setelah proses pembacaan data selesai, seluruh atribut berhasil terbaca dengan baik dan bertipe kategorikal (String). Dataset kemudian siap digunakan untuk proses pembentukan model Decision Tree.</p>
 </section>
 <hr class="docutils" />
 <section id="pembagian-data-dengan-table-partitioner">
 <h2>Pembagian Data dengan Table Partitioner<a class="headerlink" href="#pembagian-data-dengan-table-partitioner" title="Permalink to this heading">#</a></h2>
-<p>![Table Partitioner](_static/Tabel Patrioner.png)</p>
+<img src="_static/Tabel_Partitioner.png" alt="Table Partitioner" width="100%">
 <p>Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (<em>training set</em>) dan data uji (<em>testing set</em>) menggunakan node <strong>Table Partitioner</strong>.</p>
 <p>Pada workflow ini, pembagian data dilakukan dengan metode <em>relative partitioning</em>. Data training digunakan oleh algoritma untuk mempelajari pola klasifikasi, sedangkan data testing digunakan untuk menguji kemampuan model dalam melakukan prediksi terhadap data baru.</p>
 </section>
 <hr class="docutils" />
 <section id="pembelajaran-model-dengan-decision-tree-learner">
 <h2>Pembelajaran Model dengan Decision Tree Learner<a class="headerlink" href="#pembelajaran-model-dengan-decision-tree-learner" title="Permalink to this heading">#</a></h2>
-<p>![Decision Tree Learner](_static/Decision Tree Learner.png)</p>
+<img src="_static/Decision_Tree_Learner.png" alt="Decision Tree Learner" width="100%">
 <p>Data latih kemudian dihubungkan ke node <strong>Decision Tree Learner</strong>. Pada node ini saya memilih:</p>
 <ul class="simple">
 <li><p><strong>Class Column</strong>: Play Tennis</p></li>
@@ -627,7 +627,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <hr class="docutils" />
 <section id="visualisasi-pohon-keputusan">
 <h2>Visualisasi Pohon Keputusan<a class="headerlink" href="#visualisasi-pohon-keputusan" title="Permalink to this heading">#</a></h2>
-<p>![Decision Tree View](_static/Decision Tree View.png)</p>
+<img src="_static/Decision_Tree_View.png" alt="Decision Tree View" width="100%">
 <p>Untuk melihat hasil model secara visual, saya menggunakan node <strong>Decision Tree View (JavaScript)</strong>. Node ini menampilkan struktur pohon keputusan yang terbentuk berdasarkan hasil pelatihan model.</p>
 <p>Berdasarkan hasil visualisasi:</p>
 <ul class="simple">
@@ -641,7 +641,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <hr class="docutils" />
 <section id="prediksi-menggunakan-decision-tree-predictor">
 <h2>Prediksi menggunakan Decision Tree Predictor<a class="headerlink" href="#prediksi-menggunakan-decision-tree-predictor" title="Permalink to this heading">#</a></h2>
-<p>![Decision Tree Predictor](_static/Decision Tree Predictor.png)</p>
+<img src="_static/Decision_Tree_Predictor.png" alt="Decision Tree Predictor" width="100%">
 <p>Setelah model selesai dibangun, saya menggunakan node <strong>Decision Tree Predictor</strong> untuk melakukan prediksi terhadap data testing.</p>
 <p>Node ini menerima dua input:</p>
 <ol class="arabic simple">
@@ -652,7 +652,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <hr class="docutils" />
 <section id="hasil-prediksi">
 <h2>Hasil Prediksi<a class="headerlink" href="#hasil-prediksi" title="Permalink to this heading">#</a></h2>
-<p>![Hasil Decision Tree](_static/Hasil Prediksi.png)</p>
+<img src="_static/Hasil_Prediksi.png" alt="Hasil Prediksi" width="100%">
 <p>Tabel di atas menampilkan hasil keluaran dari node <strong>Decision Tree Predictor</strong>. Pada hasil tersebut terdapat penambahan kolom baru bernama <strong>Prediction (Play Tennis)</strong> yang berisi hasil prediksi algoritma terhadap data testing.</p>
 <p>Melalui tabel hasil prediksi ini, saya dapat membandingkan antara:</p>
 <ul class="simple">
@@ -664,7 +664,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <hr class="docutils" />
 <section id="evaluasi-akurasi-dengan-scorer">
 <h2>Evaluasi Akurasi dengan Scorer<a class="headerlink" href="#evaluasi-akurasi-dengan-scorer" title="Permalink to this heading">#</a></h2>
-<p><img alt="Accuracy Statistics Scorer" src="_images/AccuracyStatictsScorer.png" /></p>
+<img src="_static/Accuracy_Statistics_Scorer.png" alt="Accuracy Statistics Scorer" width="100%">
 <p>Sebagai tahap akhir evaluasi model, saya menggunakan node <strong>Scorer</strong> untuk mengukur performa klasifikasi yang dihasilkan oleh algoritma Decision Tree.</p>
 <p>Node ini bekerja dengan membandingkan:</p>
 <ul class="simple">
@@ -688,14 +688,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <li><p>False Negative</p></li>
 </ul>
 <p>Dari hasil tersebut kemudian dihitung nilai <strong>Accuracy</strong> untuk mengetahui tingkat ketepatan model secara keseluruhan.</p>
-<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset <em>Play Tennis</em>.cd /workspaces/Pendata/tugas
-rm -rf _build
-jupyter-book build .
-ghp-import -n -p -f _build/html</p>
-<p>cd /workspaces/Pendata
-git add tugas
-git commit -m “perbaiki gambar decision tree”
-git push -f origin main</p>
+<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset <em>Play Tennis</em>.</p>
 </section>
 </section>
 </section>
