@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Fase 3. Persiapan Data (Data Preparation) &#8212; Penambangan Data</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data_Preparation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -158,34 +163,30 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Materi Penambangan Data
+                    Mata kuliah Penambangan Data
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis (Business Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Fase 2. Pemahaman Data (Data Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Proyek _Missing_Values_Inputation_Materi _Normalisasi_data.html">Proyek Missing Values Inputation + Materi Normalisasi data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 3. Persiapan Data (Data Preparation)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan (Modeling)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi (Deployment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Proyek%20_Missing_Values_Inputation_Materi%20_Normalisasi_data.html">Missing Value</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 3. Persiapan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS_Pendat.html">UTS Analisa Data Kesuburan Tanah</a></li>
+
+
 </ul>
 
     </div>
@@ -215,9 +216,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -358,9 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -434,84 +435,84 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fase-3-persiapan-data-data-preparation">
-<h1>Fase 3. Persiapan Data (Data Preparation)<a class="headerlink" href="#fase-3-persiapan-data-data-preparation" title="Link to this heading">#</a></h1>
+<h1>Fase 3. Persiapan Data (Data Preparation)<a class="headerlink" href="#fase-3-persiapan-data-data-preparation" title="Permalink to this heading">#</a></h1>
 <p>Fase persiapan data mencakup seluruh aktivitas yang diperlukan untuk membangun dataset akhir (data yang akan digunakan pada tahap pemodelan) dari data mentah awal.
 Tugas pada fase ini sering dilakukan berulang kali dan tidak harus dalam urutan tertentu. Aktivitas meliputi pemilihan tabel, record, dan atribut, serta transformasi dan pembersihan data agar sesuai untuk alat pemodelan.</p>
 <hr class="docutils" />
 <section id="memilih-data">
-<h2>3.1 Memilih Data<a class="headerlink" href="#memilih-data" title="Link to this heading">#</a></h2>
+<h2>3.1 Memilih Data<a class="headerlink" href="#memilih-data" title="Permalink to this heading">#</a></h2>
 <section id="tugas">
-<h3>3.1.1 Tugas<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h3>
+<h3>3.1.1 Tugas<a class="headerlink" href="#tugas" title="Permalink to this heading">#</a></h3>
 <p>Menentukan data yang akan digunakan untuk analisis.</p>
 </section>
 <section id="hasil">
-<h3>3.1.2 Hasil<a class="headerlink" href="#hasil" title="Link to this heading">#</a></h3>
+<h3>3.1.2 Hasil<a class="headerlink" href="#hasil" title="Permalink to this heading">#</a></h3>
 <section id="alasan-penyertaan-pengecualian">
-<h4>3.1.2.1 Alasan Penyertaan/Pengecualian<a class="headerlink" href="#alasan-penyertaan-pengecualian" title="Link to this heading">#</a></h4>
+<h4>3.1.2.1 Alasan Penyertaan/Pengecualian<a class="headerlink" href="#alasan-penyertaan-pengecualian" title="Permalink to this heading">#</a></h4>
 <p>Daftarkan data yang disertakan atau dikeluarkan beserta alasan dari keputusan tersebut.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="membersihkan-data">
-<h2>3.2 Membersihkan Data<a class="headerlink" href="#membersihkan-data" title="Link to this heading">#</a></h2>
+<h2>3.2 Membersihkan Data<a class="headerlink" href="#membersihkan-data" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>3.2.1 Tugas<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>3.2.1 Tugas<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Meningkatkan kualitas data agar sesuai dengan kebutuhan teknik analisis yang dipilih.</p>
 </section>
 <section id="id2">
-<h3>3.2.2 Hasil<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>3.2.2 Hasil<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <section id="laporan-pembersihan-data">
-<h4>3.2.2.1 Laporan Pembersihan Data<a class="headerlink" href="#laporan-pembersihan-data" title="Link to this heading">#</a></h4>
+<h4>3.2.2.1 Laporan Pembersihan Data<a class="headerlink" href="#laporan-pembersihan-data" title="Permalink to this heading">#</a></h4>
 <p>Jelaskan keputusan dan tindakan yang dilakukan untuk mengatasi masalah kualitas data yang telah diidentifikasi pada tahap Verifikasi Kualitas Data di fase Data Understanding.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="membangun-data">
-<h2>3.3 Membangun Data<a class="headerlink" href="#membangun-data" title="Link to this heading">#</a></h2>
+<h2>3.3 Membangun Data<a class="headerlink" href="#membangun-data" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3>3.3.1 Tugas<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>3.3.1 Tugas<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Melakukan proses konstruksi data seperti pembuatan atribut turunan, pembuatan record baru, atau transformasi nilai pada atribut yang sudah ada.</p>
 </section>
 <section id="id4">
-<h3>3.3.2 Hasil<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>3.3.2 Hasil<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <section id="atribut-turunan">
-<h4>3.3.2.1 Atribut Turunan<a class="headerlink" href="#atribut-turunan" title="Link to this heading">#</a></h4>
+<h4>3.3.2.1 Atribut Turunan<a class="headerlink" href="#atribut-turunan" title="Permalink to this heading">#</a></h4>
 <p>Atribut turunan adalah atribut baru yang dibuat dari satu atau lebih atribut yang sudah ada dalam satu record. Jelaskan atribut yang dibuat di sini.</p>
 </section>
 <section id="record-yang-dihasilkan">
-<h4>3.3.2.2 Record yang Dihasilkan<a class="headerlink" href="#record-yang-dihasilkan" title="Link to this heading">#</a></h4>
+<h4>3.3.2.2 Record yang Dihasilkan<a class="headerlink" href="#record-yang-dihasilkan" title="Permalink to this heading">#</a></h4>
 <p>Jelaskan proses pembuatan record baru jika ada.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="integrasi-data">
-<h2>3.4 Integrasi Data<a class="headerlink" href="#integrasi-data" title="Link to this heading">#</a></h2>
+<h2>3.4 Integrasi Data<a class="headerlink" href="#integrasi-data" title="Permalink to this heading">#</a></h2>
 <section id="id5">
-<h3>3.4.1 Tugas<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>3.4.1 Tugas<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Menggabungkan informasi dari beberapa tabel atau sumber data untuk menghasilkan record atau nilai baru.</p>
 </section>
 <section id="id6">
-<h3>3.4.2 Hasil<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>3.4.2 Hasil<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <section id="data-yang-digabungkan">
-<h4>3.4.2.1 Data yang Digabungkan<a class="headerlink" href="#data-yang-digabungkan" title="Link to this heading">#</a></h4>
+<h4>3.4.2.1 Data yang Digabungkan<a class="headerlink" href="#data-yang-digabungkan" title="Permalink to this heading">#</a></h4>
 <p>Jelaskan tabel yang digabungkan (join) atau data yang dihasilkan melalui proses agregasi.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="memformat-data">
-<h2>3.5 Memformat Data<a class="headerlink" href="#memformat-data" title="Link to this heading">#</a></h2>
+<h2>3.5 Memformat Data<a class="headerlink" href="#memformat-data" title="Permalink to this heading">#</a></h2>
 <section id="id7">
-<h3>3.5.1 Tugas<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3>3.5.1 Tugas<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>Melakukan perubahan format data yang bersifat sintaksis tanpa mengubah makna data, tetapi diperlukan oleh alat pemodelan.</p>
 </section>
 <section id="id8">
-<h3>3.5.2 Hasil<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>3.5.2 Hasil<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <section id="data-yang-diformat-ulang">
-<h4>3.5.2.1 Data yang Diformat Ulang<a class="headerlink" href="#data-yang-diformat-ulang" title="Link to this heading">#</a></h4>
+<h4>3.5.2.1 Data yang Diformat Ulang<a class="headerlink" href="#data-yang-diformat-ulang" title="Permalink to this heading">#</a></h4>
 <p>Beberapa alat memiliki persyaratan tertentu, seperti:</p>
 <ul class="simple">
 <li><p>Kolom pertama sebagai ID unik</p></li>
@@ -653,7 +654,7 @@ By Mohammad Dani Ferdiansyah
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

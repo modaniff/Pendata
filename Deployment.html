@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Fase 6. Implementasi (Deployment) &#8212; Penambangan Data</title>
   
@@ -28,38 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Deployment';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="UTS Analisa Data Kesuburan Tanah" href="UTS_Pendat.html" />
     <link rel="prev" title="Fase 4. Pemodelan (Modeling)" href="Modeling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,33 +163,30 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Materi Penambangan Data
+                    Mata kuliah Penambangan Data
+                </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis (Business Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Fase 2. Pemahaman Data (Data Understanding)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Proyek _Missing_Values_Inputation_Materi _Normalisasi_data.html">Proyek Missing Values Inputation + Materi Normalisasi data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data (Data Preparation)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan (Modeling)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 6. Implementasi (Deployment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Proyek%20_Missing_Values_Inputation_Materi%20_Normalisasi_data.html">Missing Value</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fase 6. Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS_Pendat.html">UTS Analisa Data Kesuburan Tanah</a></li>
+
+
 </ul>
 
     </div>
@@ -213,9 +216,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -356,9 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -424,70 +427,70 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fase-6-implementasi-deployment">
-<h1>Fase 6. Implementasi (Deployment)<a class="headerlink" href="#fase-6-implementasi-deployment" title="Link to this heading">#</a></h1>
+<h1>Fase 6. Implementasi (Deployment)<a class="headerlink" href="#fase-6-implementasi-deployment" title="Permalink to this heading">#</a></h1>
 <p>Pembuatan model biasanya bukan akhir dari proyek. Meskipun tujuan model adalah untuk menambah pemahaman terhadap data, pengetahuan yang diperoleh harus disusun dan disajikan dalam bentuk yang dapat digunakan oleh pengguna atau pihak bisnis.</p>
 <p>Sering kali, tahap ini melibatkan penerapan model secara langsung dalam proses pengambilan keputusan organisasi. Bergantung pada kebutuhan, fase deployment dapat sesederhana pembuatan laporan atau serumit penerapan proses data mining yang berjalan secara berulang dalam organisasi.</p>
 <p>Dalam banyak kasus, pihak pengguna (customer) yang melakukan implementasi. Namun, penting bagi mereka untuk memahami langkah-langkah yang diperlukan agar model dapat digunakan secara efektif.</p>
 <hr class="docutils" />
 <section id="perencanaan-implementasi">
-<h2>6.1 Perencanaan Implementasi<a class="headerlink" href="#perencanaan-implementasi" title="Link to this heading">#</a></h2>
+<h2>6.1 Perencanaan Implementasi<a class="headerlink" href="#perencanaan-implementasi" title="Permalink to this heading">#</a></h2>
 <section id="tugas">
-<h3>6.1.1 Tugas<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h3>
+<h3>6.1.1 Tugas<a class="headerlink" href="#tugas" title="Permalink to this heading">#</a></h3>
 <p>Menggunakan hasil evaluasi untuk menentukan strategi implementasi. Jika telah ditentukan prosedur umum untuk membangun model, prosedur tersebut harus didokumentasikan untuk digunakan pada tahap implementasi.</p>
 </section>
 <section id="hasil">
-<h3>6.1.2 Hasil<a class="headerlink" href="#hasil" title="Link to this heading">#</a></h3>
+<h3>6.1.2 Hasil<a class="headerlink" href="#hasil" title="Permalink to this heading">#</a></h3>
 <section id="rencana-implementasi">
-<h4>6.1.2.1 Rencana Implementasi<a class="headerlink" href="#rencana-implementasi" title="Link to this heading">#</a></h4>
+<h4>6.1.2.1 Rencana Implementasi<a class="headerlink" href="#rencana-implementasi" title="Permalink to this heading">#</a></h4>
 <p>Ringkasan strategi implementasi, termasuk langkah-langkah yang diperlukan dan cara pelaksanaannya.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="perencanaan-monitoring-dan-pemeliharaan">
-<h2>6.2 Perencanaan Monitoring dan Pemeliharaan<a class="headerlink" href="#perencanaan-monitoring-dan-pemeliharaan" title="Link to this heading">#</a></h2>
+<h2>6.2 Perencanaan Monitoring dan Pemeliharaan<a class="headerlink" href="#perencanaan-monitoring-dan-pemeliharaan" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>6.2.1 Tugas<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>6.2.1 Tugas<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Monitoring dan pemeliharaan menjadi penting jika hasil data mining digunakan dalam operasional sehari-hari. Oleh karena itu, diperlukan rencana pemantauan yang jelas untuk memastikan model tetap berjalan dengan baik.</p>
 </section>
 <section id="id2">
-<h3>6.2.2 Hasil<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>6.2.2 Hasil<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <section id="rencana-monitoring-dan-pemeliharaan">
-<h4>6.2.2.1 Rencana Monitoring dan Pemeliharaan<a class="headerlink" href="#rencana-monitoring-dan-pemeliharaan" title="Link to this heading">#</a></h4>
+<h4>6.2.2.1 Rencana Monitoring dan Pemeliharaan<a class="headerlink" href="#rencana-monitoring-dan-pemeliharaan" title="Permalink to this heading">#</a></h4>
 <p>Ringkasan strategi pemantauan dan pemeliharaan, termasuk langkah-langkah yang diperlukan dan cara pelaksanaannya.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="menyusun-laporan-akhir">
-<h2>6.3 Menyusun Laporan Akhir<a class="headerlink" href="#menyusun-laporan-akhir" title="Link to this heading">#</a></h2>
+<h2>6.3 Menyusun Laporan Akhir<a class="headerlink" href="#menyusun-laporan-akhir" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3>6.3.1 Tugas<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>6.3.1 Tugas<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Pada akhir proyek, tim menyusun laporan akhir. Laporan ini bisa berupa ringkasan proyek atau presentasi lengkap mengenai hasil data mining, tergantung pada kebutuhan implementasi.</p>
 </section>
 <section id="id4">
-<h3>6.3.2 Hasil<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>6.3.2 Hasil<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <section id="laporan-akhir">
-<h4>6.3.2.1 Laporan Akhir<a class="headerlink" href="#laporan-akhir" title="Link to this heading">#</a></h4>
+<h4>6.3.2.1 Laporan Akhir<a class="headerlink" href="#laporan-akhir" title="Permalink to this heading">#</a></h4>
 <p>Dokumen tertulis yang merangkum seluruh proses dan hasil proyek, termasuk semua deliverable sebelumnya.</p>
 </section>
 <section id="presentasi-akhir">
-<h4>6.3.2.2 Presentasi Akhir<a class="headerlink" href="#presentasi-akhir" title="Link to this heading">#</a></h4>
+<h4>6.3.2.2 Presentasi Akhir<a class="headerlink" href="#presentasi-akhir" title="Permalink to this heading">#</a></h4>
 <p>Biasanya dilakukan pertemuan untuk mempresentasikan hasil proyek kepada pengguna atau pihak terkait.</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
 <section id="evaluasi-proyek">
-<h2>6.4 Evaluasi Proyek<a class="headerlink" href="#evaluasi-proyek" title="Link to this heading">#</a></h2>
+<h2>6.4 Evaluasi Proyek<a class="headerlink" href="#evaluasi-proyek" title="Permalink to this heading">#</a></h2>
 <section id="id5">
-<h3>6.4.1 Tugas<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>6.4.1 Tugas<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Menilai apa yang berjalan dengan baik, apa yang tidak berjalan dengan baik, serta hal-hal yang perlu diperbaiki di masa mendatang.</p>
 </section>
 <section id="id6">
-<h3>6.4.2 Hasil<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>6.4.2 Hasil<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <section id="dokumentasi-pengalaman">
-<h4>6.4.2.1 Dokumentasi Pengalaman<a class="headerlink" href="#dokumentasi-pengalaman" title="Link to this heading">#</a></h4>
+<h4>6.4.2.1 Dokumentasi Pengalaman<a class="headerlink" href="#dokumentasi-pengalaman" title="Permalink to this heading">#</a></h4>
 <p>Ringkasan pengalaman penting selama proyek, seperti:</p>
 <ul class="simple">
 <li><p>Kendala atau kesalahan yang terjadi</p></li>
@@ -537,6 +540,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Fase 4. Pemodelan (Modeling)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="UTS_Pendat.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">UTS Analisa Data Kesuburan Tanah</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -611,7 +623,7 @@ By Mohammad Dani Ferdiansyah
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
