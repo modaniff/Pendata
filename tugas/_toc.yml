@@ -17,3 +17,5 @@ chapters:
     title: UTS Pendat
   - file: TugasNaiveBayes
     title: Tugas Naive Bayes
+  - file: Tugas_Decision_Tree
+    title: Tugas Decision Tree
