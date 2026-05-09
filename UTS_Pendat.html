@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'UTS_Pendat';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analisis Data Menggunakan Naive Bayes (KNIME + Python)" href="TugasNaiveBayes.html" />
     <link rel="prev" title="Fase 6. Implementasi (Deployment)" href="Deployment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">UTS Analisa Data Kesuburan Tanah</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="TugasNaiveBayes.html">Tugas Naive Bayes</a></li>
 </ul>
 
     </div>
@@ -630,7 +632,7 @@ document.write(`
 <h3>1. Excel Reader<a class="headerlink" href="#excel-reader" title="Permalink to this heading">#</a></h3>
 <p>Node pertama yang saya gunakan adalah <strong>Excel Reader</strong>. Saya pakai node ini karena dataset yang diberikan berformat <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>, jadi saya load langsung dari file Excel ke dalam KNIME.</p>
 <p>Setelah saya konfigurasi path file-nya, node ini menghasilkan tabel data mentah berisi 2.000 baris dengan 11 kolom, yaitu 10 fitur dan 1 kolom label. Dari sini saya bisa lihat bahwa beberapa kolom masih ada yang kosong, tanda dataset memang punya missing value yang perlu ditangani.</p>
-<p><img alt="Tampilan node Excel Reader setelah berhasil membaca dataset kesuburan tanah" src="_static/ExcellReader.png" /></p>
+<p><img alt="Tampilan node Excel Reader setelah berhasil membaca dataset kesuburan tanah" src="_images/ExcellReader.png" /></p>
 <p>Dari gambar di atas, saya bisa konfirmasi bahwa data sudah berhasil masuk ke KNIME. Semua kolom fitur seperti pH Tanah, N Total, P Tersedia, dan lainnya sudah terbaca dengan tipe data yang sesuai.</p>
 </section>
 <hr class="docutils" />
@@ -652,7 +654,7 @@ document.write(`
 <li><p>Bulk Density (g/cm3)</p></li>
 <li><p>Label</p></li>
 </ul>
-<p><img alt="Konfigurasi node Column Filter, kolom ID sudah dipindah ke panel Excludes" src="_static/coluum2.png" /></p>
+<p><img alt="Konfigurasi node Column Filter, kolom ID sudah dipindah ke panel Excludes" src="_images/coluum2.png" /></p>
 <p>Dari gambar di atas terlihat kolom <code class="docutils literal notranslate"><span class="pre">ID</span></code> sudah berhasil saya pindahkan ke panel <strong>Excludes</strong>, jadi tidak akan ikut ke proses selanjutnya.</p>
 </section>
 <hr class="docutils" />
@@ -673,7 +675,7 @@ document.write(`
 <li><p>Kolom <strong>numerik</strong>: saya isi dengan nilai <strong>mean</strong> (rata-rata) dari kolom tersebut.</p></li>
 <li><p>Kolom <strong>kategorikal</strong> yaitu Tekstur Tanah: saya isi dengan nilai yang paling sering muncul (<strong>most frequent value</strong>).</p></li>
 </ul>
-<p><img alt="Konfigurasi node Missing Value untuk menangani data kosong" src="_static/misiingvalue.png" /></p>
+<p><img alt="Konfigurasi node Missing Value untuk menangani data kosong" src="_images/misiingvalue.png" /></p>
 <p>Setelah node ini selesai dijalankan, semua baris data sudah bersih dari nilai kosong dan siap saya proses ke tahap berikutnya.</p>
 </section>
 <hr class="docutils" />
@@ -726,7 +728,7 @@ x' = \frac{x - x_{min}}{x_{max} - x_{min}}
 \]</div>
 <p>Kenapa saya perlu normalisasi? Karena setiap fitur punya satuan dan rentang nilai yang berbeda. Misalnya, P Tersedia nilainya bisa puluhan (ppm), sementara N Total hanya berkisar antara 0,01 sampai 0,50 (%). Kalau tidak saya samakan skalanya, fitur dengan angka besar akan terlalu mendominasi perhitungan jarak, sementara fitur yang nilainya kecil jadi kurang diperhitungkan.</p>
 <p>Setelah normalisasi, semua nilai fitur berada di rentang 0 sampai 1, jadi pengaruh setiap fitur lebih seimbang.</p>
-<p><img alt="Konfigurasi node Normalizer dengan metode Min-Max" src="_static/normaliser.png" /></p>
+<p><img alt="Konfigurasi node Normalizer dengan metode Min-Max" src="_images/normaliser.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="table-partitioner">
@@ -761,7 +763,7 @@ x' = \frac{x - x_{min}}{x_{max} - x_{min}}
 \[
 d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
 \]</div>
-<p><img alt="Konfigurasi node K Nearest Neighbor dengan k = 5" src="_static/knn.png" /></p>
+<p><img alt="Konfigurasi node K Nearest Neighbor dengan k = 5" src="_images/knn.png" /></p>
 <p>Setelah node ini selesai, output-nya berupa tabel lengkap dengan tambahan kolom <code class="docutils literal notranslate"><span class="pre">Class</span> <span class="pre">[kNN]</span></code> yang berisi hasil prediksi kelas untuk setiap baris data uji.</p>
 </section>
 <hr class="docutils" />
@@ -775,7 +777,7 @@ d(x, y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
 <li><p>Nilai Precision, Recall, dan F-measure</p></li>
 </ul>
 <p>Perlu saya catat bahwa di KNIME, F1-Score ditampilkan dengan nama <strong>F-measure</strong>, bukan F1-Score seperti yang umum dikenal.</p>
-<p><img alt="Output node Scorer menampilkan confusion matrix dan statistik evaluasi" src="_static/scorer.png" /></p>
+<p><img alt="Output node Scorer menampilkan confusion matrix dan statistik evaluasi" src="_images/scorer.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="table-view">
@@ -980,6 +982,15 @@ F1\text{-}Score = \frac{2 \times 1.00 \times 1.00}{1.00 + 1.00} = \frac{2}{2} = 
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Fase 6. Implementasi (Deployment)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="TugasNaiveBayes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analisis Data Menggunakan Naive Bayes (KNIME + Python)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
