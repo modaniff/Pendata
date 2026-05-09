@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Konsep Dasar Pohon Keputusan &#8212; Penambangan Data</title>
+    <title>Tugas Decision Tree C4.5 (Gain Ratio) &#8212; Penambangan Data</title>
   
   
   
@@ -189,9 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="TugasNaiveBayes.html">Tugas Naive Bayes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Konsep Dasar Pohon Keputusan</a></li>
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Decision Tree</a></li>
 </ul>
 
     </div>
@@ -377,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Konsep Dasar Pohon Keputusan</h1>
+    <h1>Tugas Decision Tree C4.5 (Gain Ratio)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,16 +385,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Konsep Dasar Pohon Keputusan</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ukuran-yang-digunakan-gain-ratio">Ukuran yang Digunakan: Gain Ratio</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree-c4-5-gain-ratio">Tugas Decision Tree C4.5 (Gain Ratio)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-pohon-keputusan">Konsep Dasar Pohon Keputusan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ukuran-yang-digunakan-gain-ratio">Ukuran yang Digunakan: Gain Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-perhitungan-c4-5-tennis">Raw Data Perhitungan C4.5 Tennis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-data-ke-knime">Impor Data ke KNIME</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-dengan-table-partitioner">Pembagian Data dengan Table Partitioner</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembelajaran-model-dengan-decision-tree-learner">Pembelajaran Model dengan Decision Tree Learner</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">1. Entropy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain">2. Information Gain</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitinfo">3. SplitINFO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-information">3. Split Information</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-ratio">4. Gain Ratio</a></li>
 </ul>
 </li>
@@ -408,9 +405,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -421,8 +415,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="konsep-dasar-pohon-keputusan">
-<h1>Konsep Dasar Pohon Keputusan<a class="headerlink" href="#konsep-dasar-pohon-keputusan" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-decision-tree-c4-5-gain-ratio">
+<h1>Tugas Decision Tree C4.5 (Gain Ratio)<a class="headerlink" href="#tugas-decision-tree-c4-5-gain-ratio" title="Permalink to this heading">#</a></h1>
+<p>Pada tugas ini, saya mendemonstrasikan proses pembuatan model Decision Tree C4.5 menggunakan aplikasi KNIME. Dataset yang digunakan adalah dataset <em>Play Tennis</em>. Penjelasan untuk masing-masing tahap dan komponen di dalam workflow KNIME dijelaskan secara berurutan di bawah.</p>
+<section id="konsep-dasar-pohon-keputusan">
+<h2>Konsep Dasar Pohon Keputusan<a class="headerlink" href="#konsep-dasar-pohon-keputusan" title="Permalink to this heading">#</a></h2>
 <p>Decision Tree merupakan salah satu algoritma klasifikasi yang merepresentasikan proses pengambilan keputusan dalam bentuk struktur pohon. Setiap node pada pohon memiliki fungsi yang berbeda, yaitu:</p>
 <ul class="simple">
 <li><p><strong>Root node</strong>, yaitu node pertama yang berisi atribut terbaik untuk memisahkan data.</p></li>
@@ -439,8 +436,8 @@ document.write(`
 </ul>
 <p>Konsep ini menunjukkan bahwa Decision Tree bekerja dengan membentuk aturan-aturan keputusan yang mudah dipahami dan dapat digunakan untuk melakukan prediksi terhadap data baru.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ukuran-yang-digunakan-gain-ratio">
-<h1>Ukuran yang Digunakan: Gain Ratio<a class="headerlink" href="#ukuran-yang-digunakan-gain-ratio" title="Permalink to this heading">#</a></h1>
+<section id="ukuran-yang-digunakan-gain-ratio">
+<h2>Ukuran yang Digunakan: Gain Ratio<a class="headerlink" href="#ukuran-yang-digunakan-gain-ratio" title="Permalink to this heading">#</a></h2>
 <p>Pada algoritma Decision Tree C4.5, pemilihan atribut terbaik dilakukan menggunakan ukuran <strong>Gain Ratio</strong>. Metode ini digunakan untuk mengatasi kelemahan Information Gain yang cenderung memilih atribut dengan jumlah kategori yang banyak.</p>
 <p>Perhitungan Gain Ratio dilakukan melalui beberapa tahap berikut:</p>
 <ol class="arabic simple">
@@ -456,9 +453,7 @@ Merupakan perbandingan antara Information Gain dan Split Information.</p></li>
 <p>Atribut yang memiliki nilai <strong>Gain Ratio</strong> tertinggi akan dipilih sebagai node berikutnya dalam pembentukan pohon keputusan.</p>
 <p>Dengan menggunakan Gain Ratio, algoritma C4.5 mampu menghasilkan struktur pohon keputusan yang lebih optimal dan tidak bias terhadap atribut yang memiliki banyak nilai unik.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="tugas-decision-tree-c4-5-gain-ratio">
-<h1>Tugas Decision Tree C4.5 (Gain Ratio)<a class="headerlink" href="#tugas-decision-tree-c4-5-gain-ratio" title="Permalink to this heading">#</a></h1>
-<p>Pada tugas ini, saya mendemonstrasikan proses pembuatan model Decision Tree C4.5 menggunakan aplikasi KNIME. Dataset yang digunakan adalah dataset Play Tennis. Penjelasan untuk masing-masing tahap dan komponen di dalam workflow KNIME dijelaskan secara berurutan di bawah.</p>
+<hr class="docutils" />
 <section id="raw-data-perhitungan-c4-5-tennis">
 <h2>Raw Data Perhitungan C4.5 Tennis<a class="headerlink" href="#raw-data-perhitungan-c4-5-tennis" title="Permalink to this heading">#</a></h2>
 <p>Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputusan bermain tenis. Di dalam dataset ini terdapat 14 baris rekaman dengan atribut prediktor: Outlook, Temp., Humidity, dan Wind, serta satu atribut target yaitu Play Tennis.</p>
@@ -605,8 +600,8 @@ Entropy(S) = - \sum_{i=1}^{c} p_i \log_2 p_i
 GAIN_{split} = Entropy(Parent) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} Entropy(S_v)
 \]</div>
 </section>
-<section id="splitinfo">
-<h3>3. SplitINFO<a class="headerlink" href="#splitinfo" title="Permalink to this heading">#</a></h3>
+<section id="split-information">
+<h3>3. Split Information<a class="headerlink" href="#split-information" title="Permalink to this heading">#</a></h3>
 <p>Digunakan untuk mengurangi bias Information Gain terhadap atribut yang memiliki banyak cabang.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -635,10 +630,10 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <p>Untuk melihat hasil model secara visual, saya menggunakan node <strong>Decision Tree View (JavaScript)</strong>. Node ini menampilkan struktur pohon keputusan yang terbentuk berdasarkan hasil pelatihan model.</p>
 <p>Berdasarkan hasil visualisasi:</p>
 <ul class="simple">
-<li><p>Root node yang terpilih adalah atribut <strong>Outlook</strong></p></li>
-<li><p>Jika Outlook = Overcast, maka hasil klasifikasi adalah <strong>Yes</strong></p></li>
-<li><p>Jika Outlook = Sunny, maka dilakukan pemecahan berdasarkan hasil atribut lainnya</p></li>
-<li><p>Jika Outlook = Rain, maka dilakukan percabangan kembali menggunakan atribut <strong>Wind</strong></p></li>
+<li><p>Root node yang terpilih adalah atribut <strong>Outlook</strong>.</p></li>
+<li><p>Jika Outlook = Overcast, maka hasil klasifikasi adalah <strong>Yes</strong>.</p></li>
+<li><p>Jika Outlook = Sunny, maka dilakukan pemecahan berdasarkan atribut lainnya.</p></li>
+<li><p>Jika Outlook = Rain, maka dilakukan percabangan kembali menggunakan atribut <strong>Wind</strong>.</p></li>
 </ul>
 <p>Visualisasi ini menunjukkan bagaimana algoritma memilih atribut dengan nilai Gain Ratio tertinggi untuk memecah data hingga menghasilkan node daun (<em>leaf node</em>) yang bersifat murni.</p>
 </section>
@@ -649,10 +644,11 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <p>Setelah model selesai dibangun, saya menggunakan node <strong>Decision Tree Predictor</strong> untuk melakukan prediksi terhadap data testing.</p>
 <p>Node ini menerima dua input:</p>
 <ol class="arabic simple">
-<li><p>Model Decision Tree</p></li>
-<li><p>Data testing hasil pembagian dari Table Partitioner</p></li>
+<li><p>Model Decision Tree.</p></li>
+<li><p>Data testing hasil pembagian dari Table Partitioner.</p></li>
 </ol>
 </section>
+<hr class="docutils" />
 <section id="hasil-prediksi">
 <h2>Hasil Prediksi<a class="headerlink" href="#hasil-prediksi" title="Permalink to this heading">#</a></h2>
 <p>![Hasil Decision Tree](_static/Hasil Prediksi.png)</p>
@@ -691,7 +687,7 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <li><p>False Negative</p></li>
 </ul>
 <p>Dari hasil tersebut kemudian dihitung nilai <strong>Accuracy</strong> untuk mengetahui tingkat ketepatan model secara keseluruhan.</p>
-<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset Play Tennis.</p>
+<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset <em>Play Tennis</em>.</p>
 </section>
 </section>
 </section>
@@ -751,16 +747,15 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Konsep Dasar Pohon Keputusan</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ukuran-yang-digunakan-gain-ratio">Ukuran yang Digunakan: Gain Ratio</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree-c4-5-gain-ratio">Tugas Decision Tree C4.5 (Gain Ratio)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-pohon-keputusan">Konsep Dasar Pohon Keputusan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ukuran-yang-digunakan-gain-ratio">Ukuran yang Digunakan: Gain Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-perhitungan-c4-5-tennis">Raw Data Perhitungan C4.5 Tennis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impor-data-ke-knime">Impor Data ke KNIME</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-dengan-table-partitioner">Pembagian Data dengan Table Partitioner</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembelajaran-model-dengan-decision-tree-learner">Pembelajaran Model dengan Decision Tree Learner</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">1. Entropy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain">2. Information Gain</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitinfo">3. SplitINFO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-information">3. Split Information</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-ratio">4. Gain Ratio</a></li>
 </ul>
 </li>
@@ -772,9 +767,6 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
