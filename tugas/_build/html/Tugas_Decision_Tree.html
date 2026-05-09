@@ -456,6 +456,7 @@ Merupakan perbandingan antara Information Gain dan Split Information.</p></li>
 <hr class="docutils" />
 <section id="raw-data-perhitungan-c4-5-tennis">
 <h2>Raw Data Perhitungan C4.5 Tennis<a class="headerlink" href="#raw-data-perhitungan-c4-5-tennis" title="Permalink to this heading">#</a></h2>
+<p><img alt="Data Raw" src="_images/DataRawTree.png" /></p>
 <p>Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputusan bermain tenis. Di dalam dataset ini terdapat 14 baris rekaman dengan atribut prediktor: Outlook, Temp., Humidity, dan Wind, serta satu atribut target yaitu Play Tennis.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -558,7 +559,7 @@ Merupakan perbandingan antara Information Gain dan Split Information.</p></li>
 <hr class="docutils" />
 <section id="impor-data-ke-knime">
 <h2>Impor Data ke KNIME<a class="headerlink" href="#impor-data-ke-knime" title="Permalink to this heading">#</a></h2>
-<p><img alt="Data Raw" src="_images/DataRawTree.png" /></p>
+<p><img alt="Excel Reader" src="_images/DataRawTree.png" /></p>
 <p>Pada KNIME, saya menggunakan node <strong>Excel Reader</strong> untuk mengimpor file data tersebut. Setelah proses pembacaan data selesai, seluruh atribut berhasil terbaca dengan baik dan bertipe kategorikal (String). Dataset kemudian siap digunakan untuk proses pembentukan model Decision Tree.</p>
 </section>
 <hr class="docutils" />
@@ -687,7 +688,14 @@ GainRATIO_{split} = \frac{GAIN_{split}}{SplitINFO}
 <li><p>False Negative</p></li>
 </ul>
 <p>Dari hasil tersebut kemudian dihitung nilai <strong>Accuracy</strong> untuk mengetahui tingkat ketepatan model secara keseluruhan.</p>
-<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset <em>Play Tennis</em>.</p>
+<p>Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode <em>Gain Ratio</em> mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset <em>Play Tennis</em>.cd /workspaces/Pendata/tugas
+rm -rf _build
+jupyter-book build .
+ghp-import -n -p -f _build/html</p>
+<p>cd /workspaces/Pendata
+git add tugas
+git commit -m “perbaiki gambar decision tree”
+git push -f origin main</p>
 </section>
 </section>
 </section>

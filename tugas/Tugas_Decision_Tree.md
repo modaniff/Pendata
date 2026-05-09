@@ -47,6 +47,8 @@ Dengan menggunakan Gain Ratio, algoritma C4.5 mampu menghasilkan struktur pohon 
 
 ## Raw Data Perhitungan C4.5 Tennis
 
+![Data Raw](_static/DataRawTree.png)
+
 Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputusan bermain tenis. Di dalam dataset ini terdapat 14 baris rekaman dengan atribut prediktor: Outlook, Temp., Humidity, dan Wind, serta satu atribut target yaitu Play Tennis.
 
 | Outlook | Temp. | Humidity | Wind | Play Tennis |
@@ -70,7 +72,7 @@ Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputu
 
 ## Impor Data ke KNIME
 
-![Data Raw](_static/DataRawTree.png)
+![Excel Reader](_static/DataRawTree.png)
 
 Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data tersebut. Setelah proses pembacaan data selesai, seluruh atribut berhasil terbaca dengan baik dan bertipe kategorikal (String). Dataset kemudian siap digunakan untuk proses pembentukan model Decision Tree.
 
@@ -216,4 +218,12 @@ Berdasarkan hasil evaluasi menggunakan node **Scorer**, model berhasil melakukan
 
 Dari hasil tersebut kemudian dihitung nilai **Accuracy** untuk mengetahui tingkat ketepatan model secara keseluruhan.
 
-Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset *Play Tennis*.
+Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset *Play Tennis*.cd /workspaces/Pendata/tugas
+rm -rf _build
+jupyter-book build .
+ghp-import -n -p -f _build/html
+
+cd /workspaces/Pendata
+git add tugas
+git commit -m "perbaiki gambar decision tree"
+git push -f origin main
