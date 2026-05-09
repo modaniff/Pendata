@@ -1,3 +1,44 @@
+# Konsep Dasar Pohon Keputusan
+
+Decision Tree merupakan salah satu algoritma klasifikasi yang merepresentasikan proses pengambilan keputusan dalam bentuk struktur pohon. Setiap node pada pohon memiliki fungsi yang berbeda, yaitu:
+
+- **Root node**, yaitu node pertama yang berisi atribut terbaik untuk memisahkan data.
+- **Branch (cabang)**, yaitu percabangan yang merepresentasikan nilai atau kondisi dari suatu atribut.
+- **Leaf node**, yaitu node akhir yang berisi hasil klasifikasi.
+
+Proses pembentukan pohon dilakukan secara bertahap dengan memilih atribut terbaik sebagai pemisah data. Proses ini dilakukan berulang sampai setiap kelompok data menjadi homogen atau tidak dapat dibagi lagi.
+
+Pada dataset *Play Tennis*, hasil visualisasi pohon menunjukkan bahwa:
+
+- Root node yang terpilih adalah atribut **Outlook**.
+- Jika **Outlook = Overcast**, maka hasil klasifikasi adalah **Yes**.
+- Jika **Outlook = Rain**, maka data dibagi kembali berdasarkan atribut **Wind**.
+- Jika **Outlook = Sunny**, maka proses pemisahan dilanjutkan menggunakan atribut lain yang paling relevan.
+
+Konsep ini menunjukkan bahwa Decision Tree bekerja dengan membentuk aturan-aturan keputusan yang mudah dipahami dan dapat digunakan untuk melakukan prediksi terhadap data baru.
+
+# Ukuran yang Digunakan: Gain Ratio
+
+Pada algoritma Decision Tree C4.5, pemilihan atribut terbaik dilakukan menggunakan ukuran **Gain Ratio**. Metode ini digunakan untuk mengatasi kelemahan Information Gain yang cenderung memilih atribut dengan jumlah kategori yang banyak.
+
+Perhitungan Gain Ratio dilakukan melalui beberapa tahap berikut:
+
+1. **Entropy**  
+   Digunakan untuk mengukur tingkat ketidakmurnian data.
+
+2. **Information Gain**  
+   Mengukur seberapa besar pengurangan entropy setelah data dipisahkan berdasarkan suatu atribut.
+
+3. **Split Information**  
+   Mengukur banyaknya informasi yang dihasilkan oleh proses pembagian data.
+
+4. **Gain Ratio**  
+   Merupakan perbandingan antara Information Gain dan Split Information.
+
+Atribut yang memiliki nilai **Gain Ratio** tertinggi akan dipilih sebagai node berikutnya dalam pembentukan pohon keputusan.
+
+Dengan menggunakan Gain Ratio, algoritma C4.5 mampu menghasilkan struktur pohon keputusan yang lebih optimal dan tidak bias terhadap atribut yang memiliki banyak nilai unik.
+
 # Tugas Decision Tree C4.5 (Gain Ratio)
 
 Pada tugas ini, saya mendemonstrasikan proses pembuatan model Decision Tree C4.5 menggunakan aplikasi KNIME. Dataset yang digunakan adalah dataset Play Tennis. Penjelasan untuk masing-masing tahap dan komponen di dalam workflow KNIME dijelaskan secara berurutan di bawah.
@@ -27,7 +68,7 @@ Data awal bersumber dari file Excel yang berisi histori kondisi cuaca dan keputu
 
 ## Impor Data ke KNIME
 
-![Data Raw](Assets/Tugas/TugasDecisionTreeGainRatio/DataRaw.png)
+![Data Raw](_static/DataRawTree.png)
 
 Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data tersebut. Setelah proses pembacaan data selesai, seluruh atribut berhasil terbaca dengan baik dan bertipe kategorikal (String). Dataset kemudian siap digunakan untuk proses pembentukan model Decision Tree.
 
@@ -35,7 +76,7 @@ Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data ter
 
 ## Pembagian Data dengan Table Partitioner
 
-![Table Partitioner](Assets/Tugas/TugasDecisionTreeGainRatio/TablePartitioner.png)
+![Table Partitioner](_static/Tabel Patrioner.png)
 
 Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (*training set*) dan data uji (*testing set*) menggunakan node **Table Partitioner**. 
 
@@ -45,7 +86,7 @@ Pada workflow ini, pembagian data dilakukan dengan metode *relative partitioning
 
 ## Pembelajaran Model dengan Decision Tree Learner
 
-![Decision Tree Learner](Assets/Tugas/TugasDecisionTreeGainRatio/DecisionTreeLearner.png)
+![Decision Tree Learner](_static/Decision Tree Learner.png)
 
 Data latih kemudian dihubungkan ke node **Decision Tree Learner**. Pada node ini saya memilih:
 
@@ -101,7 +142,7 @@ Node ini kemudian membentuk model pohon keputusan berdasarkan atribut dengan nil
 
 ## Visualisasi Pohon Keputusan
 
-![Decision Tree View](Assets/Tugas/TugasDecisionTreeGainRatio/DecisionTreeView.png)
+![Decision Tree View](_static/Decision Tree View.png)
 
 Untuk melihat hasil model secara visual, saya menggunakan node **Decision Tree View (JavaScript)**. Node ini menampilkan struktur pohon keputusan yang terbentuk berdasarkan hasil pelatihan model.
 
@@ -118,7 +159,7 @@ Visualisasi ini menunjukkan bagaimana algoritma memilih atribut dengan nilai Gai
 
 ## Prediksi menggunakan Decision Tree Predictor
 
-![Decision Tree Predictor](Assets/Tugas/TugasDecisionTreeGainRatio/DecisionTreePredictor.png)
+![Decision Tree Predictor](_static/Decision Tree Predictor.png)
 
 Setelah model selesai dibangun, saya menggunakan node **Decision Tree Predictor** untuk melakukan prediksi terhadap data testing.
 
@@ -128,7 +169,7 @@ Node ini menerima dua input:
 
 ## Hasil Prediksi
 
-![Hasil Decision Tree](Assets/Tugas/TugasDecisionTreeGainRatio/HasilDecisionTree.png)
+![Hasil Decision Tree](_static/Hasil Prediksi.png)
 
 Tabel di atas menampilkan hasil keluaran dari node **Decision Tree Predictor**. Pada hasil tersebut terdapat penambahan kolom baru bernama **Prediction (Play Tennis)** yang berisi hasil prediksi algoritma terhadap data testing.
 
@@ -142,7 +183,7 @@ Dari hasil tersebut terlihat bahwa model berhasil mengikuti pola klasifikasi yan
 
 ## Evaluasi Akurasi dengan Scorer
 
-![Accuracy Statistics Scorer](Assets/Tugas/TugasDecisionTreeGainRatio/AccuracyStatictsScorer.png)
+![Accuracy Statistics Scorer](_static/AccuracyStatictsScorer.png)
 
 Sebagai tahap akhir evaluasi model, saya menggunakan node **Scorer** untuk mengukur performa klasifikasi yang dihasilkan oleh algoritma Decision Tree.
 
