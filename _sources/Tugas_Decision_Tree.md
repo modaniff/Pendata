@@ -1,4 +1,8 @@
-# Konsep Dasar Pohon Keputusan
+# Tugas Decision Tree C4.5 (Gain Ratio)
+
+Pada tugas ini, saya mendemonstrasikan proses pembuatan model Decision Tree C4.5 menggunakan aplikasi KNIME. Dataset yang digunakan adalah dataset *Play Tennis*. Penjelasan untuk masing-masing tahap dan komponen di dalam workflow KNIME dijelaskan secara berurutan di bawah.
+
+### Konsep Dasar Pohon Keputusan
 
 Decision Tree merupakan salah satu algoritma klasifikasi yang merepresentasikan proses pengambilan keputusan dalam bentuk struktur pohon. Setiap node pada pohon memiliki fungsi yang berbeda, yaitu:
 
@@ -17,7 +21,7 @@ Pada dataset *Play Tennis*, hasil visualisasi pohon menunjukkan bahwa:
 
 Konsep ini menunjukkan bahwa Decision Tree bekerja dengan membentuk aturan-aturan keputusan yang mudah dipahami dan dapat digunakan untuk melakukan prediksi terhadap data baru.
 
-# Ukuran yang Digunakan: Gain Ratio
+### Ukuran yang Digunakan: Gain Ratio
 
 Pada algoritma Decision Tree C4.5, pemilihan atribut terbaik dilakukan menggunakan ukuran **Gain Ratio**. Metode ini digunakan untuk mengatasi kelemahan Information Gain yang cenderung memilih atribut dengan jumlah kategori yang banyak.
 
@@ -39,9 +43,7 @@ Atribut yang memiliki nilai **Gain Ratio** tertinggi akan dipilih sebagai node b
 
 Dengan menggunakan Gain Ratio, algoritma C4.5 mampu menghasilkan struktur pohon keputusan yang lebih optimal dan tidak bias terhadap atribut yang memiliki banyak nilai unik.
 
-# Tugas Decision Tree C4.5 (Gain Ratio)
-
-Pada tugas ini, saya mendemonstrasikan proses pembuatan model Decision Tree C4.5 menggunakan aplikasi KNIME. Dataset yang digunakan adalah dataset Play Tennis. Penjelasan untuk masing-masing tahap dan komponen di dalam workflow KNIME dijelaskan secara berurutan di bawah.
+---
 
 ## Raw Data Perhitungan C4.5 Tennis
 
@@ -78,7 +80,7 @@ Pada KNIME, saya menggunakan node **Excel Reader** untuk mengimpor file data ter
 
 ![Table Partitioner](_static/Tabel Patrioner.png)
 
-Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (*training set*) dan data uji (*testing set*) menggunakan node **Table Partitioner**. 
+Sebelum proses pelatihan model dilakukan, dataset terlebih dahulu dibagi menjadi data latih (*training set*) dan data uji (*testing set*) menggunakan node **Table Partitioner**.
 
 Pada workflow ini, pembagian data dilakukan dengan metode *relative partitioning*. Data training digunakan oleh algoritma untuk mempelajari pola klasifikasi, sedangkan data testing digunakan untuk menguji kemampuan model dalam melakukan prediksi terhadap data baru.
 
@@ -116,7 +118,7 @@ $$
 GAIN_{split} = Entropy(Parent) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} Entropy(S_v)
 $$
 
-### 3. SplitINFO
+### 3. Split Information
 
 Digunakan untuk mengurangi bias Information Gain terhadap atribut yang memiliki banyak cabang.
 
@@ -148,10 +150,10 @@ Untuk melihat hasil model secara visual, saya menggunakan node **Decision Tree V
 
 Berdasarkan hasil visualisasi:
 
-- Root node yang terpilih adalah atribut **Outlook**
-- Jika Outlook = Overcast, maka hasil klasifikasi adalah **Yes**
-- Jika Outlook = Sunny, maka dilakukan pemecahan berdasarkan hasil atribut lainnya
-- Jika Outlook = Rain, maka dilakukan percabangan kembali menggunakan atribut **Wind**
+- Root node yang terpilih adalah atribut **Outlook**.
+- Jika Outlook = Overcast, maka hasil klasifikasi adalah **Yes**.
+- Jika Outlook = Sunny, maka dilakukan pemecahan berdasarkan atribut lainnya.
+- Jika Outlook = Rain, maka dilakukan percabangan kembali menggunakan atribut **Wind**.
 
 Visualisasi ini menunjukkan bagaimana algoritma memilih atribut dengan nilai Gain Ratio tertinggi untuk memecah data hingga menghasilkan node daun (*leaf node*) yang bersifat murni.
 
@@ -164,8 +166,11 @@ Visualisasi ini menunjukkan bagaimana algoritma memilih atribut dengan nilai Gai
 Setelah model selesai dibangun, saya menggunakan node **Decision Tree Predictor** untuk melakukan prediksi terhadap data testing.
 
 Node ini menerima dua input:
-1. Model Decision Tree
-2. Data testing hasil pembagian dari Table Partitioner
+
+1. Model Decision Tree.
+2. Data testing hasil pembagian dari Table Partitioner.
+
+---
 
 ## Hasil Prediksi
 
@@ -174,6 +179,7 @@ Node ini menerima dua input:
 Tabel di atas menampilkan hasil keluaran dari node **Decision Tree Predictor**. Pada hasil tersebut terdapat penambahan kolom baru bernama **Prediction (Play Tennis)** yang berisi hasil prediksi algoritma terhadap data testing.
 
 Melalui tabel hasil prediksi ini, saya dapat membandingkan antara:
+
 - nilai asli pada kolom **Play Tennis**
 - nilai hasil prediksi pada kolom **Prediction (Play Tennis)**
 
@@ -188,6 +194,7 @@ Dari hasil tersebut terlihat bahwa model berhasil mengikuti pola klasifikasi yan
 Sebagai tahap akhir evaluasi model, saya menggunakan node **Scorer** untuk mengukur performa klasifikasi yang dihasilkan oleh algoritma Decision Tree.
 
 Node ini bekerja dengan membandingkan:
+
 - kelas target asli (**Play Tennis**)
 - hasil prediksi model (**Prediction (Play Tennis)**)
 
@@ -209,4 +216,4 @@ Berdasarkan hasil evaluasi menggunakan node **Scorer**, model berhasil melakukan
 
 Dari hasil tersebut kemudian dihitung nilai **Accuracy** untuk mengetahui tingkat ketepatan model secara keseluruhan.
 
-Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset Play Tennis.
+Hasil evaluasi ini menunjukkan bahwa algoritma Decision Tree C4.5 dengan metode *Gain Ratio* mampu membentuk aturan klasifikasi yang efektif berdasarkan atribut cuaca seperti Outlook, Humidity, dan Wind pada dataset *Play Tennis*.
