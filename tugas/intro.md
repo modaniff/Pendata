@@ -1,5 +1,4 @@
 # Mata kuliah Penambangan Data
-
 <p>Nama : Mohammad Dani Ferdiansyah</p>
 <p>Nim : 240411100035</p>
 <p>Kelas : B</p>
