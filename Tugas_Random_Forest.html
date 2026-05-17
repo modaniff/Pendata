@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Random Forest &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas_Random_Forest';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Penambangan Data</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mata kuliah Penambangan Data
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Tugas_Random_Forest.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random Forest</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-reader">CSV Reader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#column-filter">Column Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-python-script-random-forest">Training: Python Script Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-python-script-prediksi">Testing: Python Script Prediksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer">Scorer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akurasi">Akurasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h1>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="xref myst">Dataset</span></p></li>
+<li><p><span class="xref myst">Implementasi Pada KNIME</span></p>
+<ul>
+<li><p><span class="xref myst">Workflow</span></p></li>
+<li><p><span class="xref myst">Partisi</span></p></li>
+<li><p><span class="xref myst">Column Filter</span></p></li>
+<li><p><span class="xref myst">Training: Python Script Random Forest</span></p></li>
+<li><p><span class="xref myst">Testing: Python Script Prediksi</span></p></li>
+<li><p><span class="xref myst">Scorer</span></p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">Kesimpulan</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
+<p>Dataset yang digunakan adalah <strong>Dataset Prediksi Kelulusan Mahasiswa</strong>. Dataset ini dibuat untuk melakukan klasifikasi status kelulusan mahasiswa berdasarkan beberapa atribut akademik dan non-akademik.</p>
+<p>Tujuan dari dataset ini adalah memprediksi apakah mahasiswa termasuk dalam kategori:</p>
+<ul class="simple">
+<li><p><strong>Tepat Waktu</strong></p></li>
+<li><p><strong>Tidak Tepat Waktu</strong></p></li>
+</ul>
+<p>Dataset ini memiliki:</p>
+<ul class="simple">
+<li><p><strong>500 baris data</strong></p></li>
+<li><p><strong>7 fitur utama</strong></p></li>
+<li><p><strong>1 label/target</strong> bernama <code class="docutils literal notranslate"><span class="pre">Status_Kelulusan</span></code></p></li>
+</ul>
+<p>Berikut fitur yang digunakan pada dataset:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Nama Fitur</p></th>
+<th class="head"><p>Tipe Data</p></th>
+<th class="head"><p>Deskripsi</p></th>
+<th class="head"><p>Contoh Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>ID_Mahasiswa</p></td>
+<td><p>String</p></td>
+<td><p>Kode unik mahasiswa</p></td>
+<td><p>MHS001</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>IPK</p></td>
+<td><p>Numerik</p></td>
+<td><p>Indeks Prestasi Kumulatif mahasiswa</p></td>
+<td><p>3.45</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Kehadiran</p></td>
+<td><p>Numerik</p></td>
+<td><p>Persentase kehadiran mahasiswa</p></td>
+<td><p>85</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Nilai_Tugas</p></td>
+<td><p>Numerik</p></td>
+<td><p>Nilai tugas mahasiswa</p></td>
+<td><p>88</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Nilai_UTS</p></td>
+<td><p>Numerik</p></td>
+<td><p>Nilai Ujian Tengah Semester</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Nilai_UAS</p></td>
+<td><p>Numerik</p></td>
+<td><p>Nilai Ujian Akhir Semester</p></td>
+<td><p>84</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Organisasi</p></td>
+<td><p>Kategorikal</p></td>
+<td><p>Status keaktifan organisasi</p></td>
+<td><p>Aktif / Tidak Aktif</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Status_Kelulusan</p></td>
+<td><p>Kategorikal</p></td>
+<td><p>Label target prediksi</p></td>
+<td><p>Tepat Waktu / Tidak Tepat Waktu</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Label yang digunakan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tepat Waktu</p></td>
+<td><p>Mahasiswa diprediksi lulus tepat waktu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Tepat Waktu</p></td>
+<td><p>Mahasiswa diprediksi tidak lulus tepat waktu</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="implementasi-pada-knime">
+<h2>Implementasi Pada KNIME<a class="headerlink" href="#implementasi-pada-knime" title="Permalink to this heading">#</a></h2>
+<p>Workflow ini dirancang menggunakan KNIME untuk membangun model klasifikasi <strong>Random Forest</strong> berbasis Python menggunakan library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
+<p>Model dibuat menggunakan node <strong>Python Script</strong>, sehingga proses training dan testing dilakukan melalui script Python di dalam KNIME.</p>
+<p>Tujuan dari workflow ini adalah memprediksi <code class="docutils literal notranslate"><span class="pre">Status_Kelulusan</span></code> mahasiswa berdasarkan IPK, kehadiran, nilai tugas, nilai UTS, nilai UAS, dan status organisasi.</p>
+<hr class="docutils" />
+<section id="workflow">
+<h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="workflow-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/workflowrandomforest.png" src="../img/random-forest-kelulusan/workflowrandomforest.png" />
+<figcaption>
+<p><span class="caption-text">Workflow KNIME untuk klasifikasi Random Forest prediksi kelulusan mahasiswa</span><a class="headerlink" href="#workflow-rf-kelulusan" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>Workflow terdiri dari node-node berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>CSV Reader</strong> digunakan untuk membaca dataset.</p></li>
+<li><p><strong>Column Filter</strong> digunakan untuk membuang kolom yang tidak diperlukan.</p></li>
+<li><p><strong>Table Partitioner</strong> digunakan untuk membagi data training dan testing.</p></li>
+<li><p><strong>Python Script</strong> pertama digunakan untuk melatih model Random Forest.</p></li>
+<li><p><strong>Python Script</strong> kedua digunakan untuk melakukan prediksi.</p></li>
+<li><p><strong>Scorer</strong> digunakan untuk mengevaluasi hasil prediksi.</p></li>
+</ol>
+<p>Alur workflow:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CSV Reader
+    ↓
+Column Filter
+    ↓
+Table Partitioner
+   ├── Python Script Training
+   └── Python Script Testing / Prediction
+                ↓
+              Scorer
+</pre></div>
+</div>
+</div>
+</figcaption>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="csv-reader">
+<h3>CSV Reader<a class="headerlink" href="#csv-reader" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="csv-reader-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/csvreaderforest.png" src="../img/random-forest-kelulusan/csvreaderforest.png" />
+<figcaption>
+<p><span class="caption-text">Node CSV Reader untuk membaca dataset</span><a class="headerlink" href="#csv-reader-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>CSV Reader</strong> digunakan untuk membaca file dataset:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dataset_kelulusan_mahasiswa.csv
+</pre></div>
+</div>
+<p>Langkah konfigurasi:</p>
+<ol class="arabic simple">
+<li><p>Tambahkan node <strong>CSV Reader</strong>.</p></li>
+<li><p>Pilih file <code class="docutils literal notranslate"><span class="pre">dataset_kelulusan_mahasiswa.csv</span></code>.</p></li>
+<li><p>Pastikan delimiter menggunakan koma <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p></li>
+<li><p>Klik <strong>Apply</strong>.</p></li>
+<li><p>Klik <strong>OK</strong>.</p></li>
+<li><p>Jalankan node dengan memilih <strong>Execute</strong>.</p></li>
+</ol>
+<p>Setelah node dijalankan, data dari CSV akan masuk ke dalam workflow KNIME.</p>
+</section>
+<hr class="docutils" />
+<section id="column-filter">
+<h3>Column Filter<a class="headerlink" href="#column-filter" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="column-filter-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/collumfilterforest.png" src="../img/random-forest-kelulusan/collumfilterforest.png" />
+<figcaption>
+<p><span class="caption-text">Konfigurasi Column Filter</span><a class="headerlink" href="#column-filter-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>Column Filter</strong> digunakan untuk membuang kolom yang tidak diperlukan pada proses klasifikasi.</p>
+<p>Pada dataset ini, kolom <code class="docutils literal notranslate"><span class="pre">ID_Mahasiswa</span></code> tidak digunakan sebagai fitur prediksi karena hanya berfungsi sebagai identitas mahasiswa.</p>
+<p>Kolom yang dibuang:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolom</p></th>
+<th class="head"><p>Alasan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ID_Mahasiswa</p></td>
+<td><p>Hanya sebagai identitas, bukan atribut prediksi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Kolom yang tetap digunakan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Kolom</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>IPK</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Kehadiran</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Nilai_Tugas</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Nilai_UTS</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Nilai_UAS</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Organisasi</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Status_Kelulusan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="partisi">
+<h3>Partisi<a class="headerlink" href="#partisi" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="partisi-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/partisiforest.png" src="../img/random-forest-kelulusan/partisiforest.png" />
+<figcaption>
+<p><span class="caption-text">Konfigurasi Table Partitioner</span><a class="headerlink" href="#partisi-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>Table Partitioner</strong> digunakan untuk membagi dataset menjadi data training dan data testing.</p>
+<p>Data dibagi dengan proporsi:</p>
+<ul class="simple">
+<li><p><strong>80%</strong> → data training</p></li>
+<li><p><strong>20%</strong> → data testing</p></li>
+</ul>
+<p>Konfigurasi:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Partitioning Method</p></td>
+<td><p>Relative</p></td>
+</tr>
+<tr class="row-odd"><td><p>Training Data</p></td>
+<td><p>80%</p></td>
+</tr>
+<tr class="row-even"><td><p>Testing Data</p></td>
+<td><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sampling</p></td>
+<td><p>Stratified Sampling</p></td>
+</tr>
+<tr class="row-even"><td><p>Stratification Column</p></td>
+<td><p>Status_Kelulusan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p>Output atas digunakan sebagai <strong>data training</strong>.</p></li>
+<li><p>Output bawah digunakan sebagai <strong>data testing</strong>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="training-python-script-random-forest">
+<h3>Training: Python Script Random Forest<a class="headerlink" href="#training-python-script-random-forest" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="py-training-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/TrainingPythonScript.png" src="../img/random-forest-kelulusan/TrainingPythonScript.png" />
+<figcaption>
+<p><span class="caption-text">Konfigurasi Python Script untuk Training</span><a class="headerlink" href="#py-training-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>Python Script</strong> pertama digunakan untuk melakukan training model Random Forest.</p>
+<p>Node ini menerima data training dari output atas <strong>Table Partitioner</strong>.</p>
+<p>Script yang digunakan:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Ambil data training dari KNIME</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># Pisahkan fitur dan label</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Status_Kelulusan&quot;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;Status_Kelulusan&quot;</span><span class="p">]</span>
+
+<span class="c1"># Encoding fitur kategorikal</span>
+<span class="n">feature_encoders</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="n">X_train</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+    <span class="n">feature_encoders</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span>
+
+<span class="c1"># Encoding target</span>
+<span class="n">target_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y_train_encoded</span> <span class="o">=</span> <span class="n">target_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Membuat model Random Forest</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># Training model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_encoded</span><span class="p">)</span>
+
+<span class="c1"># Simpan model dan encoder</span>
+<span class="n">pickle_filename</span> <span class="o">=</span> <span class="s2">&quot;random_forest_kelulusan_model.pkl&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">((</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_encoders</span><span class="p">,</span> <span class="n">target_encoder</span><span class="p">),</span> <span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model disimpan di: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">pickle_filename</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Output data training ke KNIME</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parameter yang digunakan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Nilai</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code></p></td>
+<td><p>100</p></td>
+<td><p>Jumlah pohon keputusan</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code></p></td>
+<td><p>10</p></td>
+<td><p>Kedalaman maksimum pohon</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">random_state</span></code></p></td>
+<td><p>42</p></td>
+<td><p>Seed agar hasil konsisten</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pada script ini, kolom <code class="docutils literal notranslate"><span class="pre">Organisasi</span></code> diubah menjadi angka menggunakan <code class="docutils literal notranslate"><span class="pre">LabelEncoder</span></code>, sedangkan target <code class="docutils literal notranslate"><span class="pre">Status_Kelulusan</span></code> juga diubah menjadi bentuk numerik agar dapat diproses oleh model.</p>
+</section>
+<hr class="docutils" />
+<section id="testing-python-script-prediksi">
+<h3>Testing: Python Script Prediksi<a class="headerlink" href="#testing-python-script-prediksi" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="py-testing-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/TestingPythonScriptPrediksi.png" src="../img/random-forest-kelulusan/TestingPythonScriptPrediksi.png" />
+<figcaption>
+<p><span class="caption-text">Konfigurasi Python Script untuk Testing</span><a class="headerlink" href="#py-testing-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>Python Script</strong> kedua digunakan untuk melakukan prediksi pada data testing.</p>
+<p>Node ini menerima data testing dari output bawah <strong>Table Partitioner</strong>.</p>
+<p>Script yang digunakan:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Ambil data testing dari KNIME</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># Load model dan encoder</span>
+<span class="n">pickle_filename</span> <span class="o">=</span> <span class="s2">&quot;random_forest_kelulusan_model.pkl&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pickle_filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">feature_encoders</span><span class="p">,</span> <span class="n">target_encoder</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model berhasil dimuat.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Pisahkan fitur dan label</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Status_Kelulusan&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Encoding fitur kategorikal menggunakan encoder dari data training</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">le</span> <span class="ow">in</span> <span class="n">feature_encoders</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">X_test</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+
+<span class="c1"># Prediksi</span>
+<span class="n">predictions_encoded</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Ubah hasil prediksi menjadi label asli</span>
+<span class="n">predictions_label</span> <span class="o">=</span> <span class="n">target_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predictions_encoded</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan hasil prediksi ke dataframe</span>
+<span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;Prediction_Status_Kelulusan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions_label</span>
+<span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;confidence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Output ke KNIME</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Kolom hasil yang ditambahkan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolom</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Prediction_Status_Kelulusan</p></td>
+<td><p>Hasil prediksi model</p></td>
+</tr>
+<tr class="row-odd"><td><p>confidence</p></td>
+<td><p>Tingkat keyakinan model terhadap prediksi</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="scorer">
+<h3>Scorer<a class="headerlink" href="#scorer" title="Permalink to this heading">#</a></h3>
+<figure class="align-center" id="scorer-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/scorerforest.png" src="../img/random-forest-kelulusan/scorerforest.png" />
+<figcaption>
+<p><span class="caption-text">Hasil Scorer</span><a class="headerlink" href="#scorer-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Node <strong>Scorer</strong> digunakan untuk mengevaluasi performa model.</p>
+<p>Node ini membandingkan label asli dengan hasil prediksi.</p>
+<p>Konfigurasi Scorer:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Kolom</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Actual Column</p></td>
+<td><p>Status_Kelulusan</p></td>
+</tr>
+<tr class="row-odd"><td><p>Predicted Column</p></td>
+<td><p>Prediction_Status_Kelulusan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Output dari Scorer berupa:</p>
+<ul class="simple">
+<li><p>Confusion Matrix</p></li>
+<li><p>Accuracy</p></li>
+<li><p>Precision</p></li>
+<li><p>Recall</p></li>
+<li><p>F1-Score</p></li>
+</ul>
+<hr class="docutils" />
+<section id="confusion-matrix">
+<h4>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this heading">#</a></h4>
+<p>Confusion Matrix digunakan untuk melihat jumlah prediksi benar dan salah.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aktual / Prediksi</p></th>
+<th class="head text-right"><p>Tepat Waktu</p></th>
+<th class="head text-right"><p>Tidak Tepat Waktu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tepat Waktu</p></td>
+<td class="text-right"><p>Benar</p></td>
+<td class="text-right"><p>Salah</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tidak Tepat Waktu</p></td>
+<td class="text-right"><p>Salah</p></td>
+<td class="text-right"><p>Benar</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="akurasi">
+<h4>Akurasi<a class="headerlink" href="#akurasi" title="Permalink to this heading">#</a></h4>
+<figure class="align-center" id="akurasi-rf-kelulusan">
+<img alt="../img/random-forest-kelulusan/accuracyforest.png" src="../img/random-forest-kelulusan/accuracyforest.png" />
+<figcaption>
+<p><span class="caption-text">Hasil Akurasi Model</span><a class="headerlink" href="#akurasi-rf-kelulusan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Akurasi menunjukkan persentase prediksi yang benar dibandingkan dengan seluruh data testing.</p>
+<p>Rumus akurasi:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Accuracy = Jumlah Prediksi Benar / Total Data Testing
+</pre></div>
+</div>
+<p>Contoh interpretasi:</p>
+<p>Apabila akurasi model sebesar 92%, maka model Random Forest berhasil memprediksi status kelulusan mahasiswa dengan tingkat ketepatan sebesar 92%.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
+<p>Berdasarkan implementasi yang dilakukan, algoritma Random Forest dapat digunakan untuk memprediksi status kelulusan mahasiswa.</p>
+<p>Model menggunakan beberapa atribut, yaitu:</p>
+<ul class="simple">
+<li><p>IPK</p></li>
+<li><p>Kehadiran</p></li>
+<li><p>Nilai_Tugas</p></li>
+<li><p>Nilai_UTS</p></li>
+<li><p>Nilai_UAS</p></li>
+<li><p>Organisasi</p></li>
+</ul>
+<p>Hasil prediksi kemudian dievaluasi menggunakan node Scorer di KNIME. Semakin tinggi nilai akurasi, precision, recall, dan F1-Score, maka semakin baik performa model dalam melakukan klasifikasi status kelulusan mahasiswa.</p>
+<p>Random Forest cocok digunakan pada kasus ini karena mampu menangani data numerik dan kategorikal serta memiliki performa yang stabil untuk tugas klasifikasi.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pada-knime">Implementasi Pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-reader">CSV Reader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#column-filter">Column Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partisi">Partisi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-python-script-random-forest">Training: Python Script Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-python-script-prediksi">Testing: Python Script Prediksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer">Scorer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akurasi">Akurasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mohammad Dani Ferdiansyah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
