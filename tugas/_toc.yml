@@ -1,21 +1,33 @@
 format: jb-book
 root: intro
+
 chapters:
-  - file: Business_Understanding
+  - file: tugas/Business_Understanding
     title: Fase 1. Pemahaman Bisnis
-  - file: Data_Understanding
+
+  - file: tugas/Data_Understanding
     title: Fase 2. Pemahaman Data
-  - file: Proyek _Missing_Values_Inputation_Materi _Normalisasi_data
+
+  - file: tugas/Proyek_Missing_Values_Inputation_Materi_Normalisasi_data
     title: Proyek Missing Values & Normalisasi
-  - file: Data_Preparation
+
+  - file: tugas/Data_Preparation
     title: Fase 3. Persiapan Data
-  - file: Modeling
+
+  - file: tugas/Modeling
     title: Fase 4. Pemodelan
-  - file: Deployment
-    title: Fase 6. Implementasi
-  - file: UTS_Pendat
+
+  - file: tugas/Deployment
+    title: Fase 5. Implementasi
+
+  - file: tugas/UTS_Pendat
     title: UTS Pendat
-  - file: TugasNaiveBayes
+
+  - file: tugas/TugasNaiveBayes
     title: Tugas Naive Bayes
-  - file: Tugas_Decision_Tree
+
+  - file: tugas/Tugas_Decision_Tree
     title: Tugas Decision Tree
+
+  - file: tugas/Tugas_Random_Forest
+    title: Tugas Random Forest
