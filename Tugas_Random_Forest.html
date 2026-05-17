@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas_Random_Forest';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tugas Decision Tree C4.5 (Gain Ratio)" href="Tugas_Decision_Tree.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,8 +128,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -167,7 +166,25 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Business_Understanding.html">Fase 1. Pemahaman Bisnis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Proyek_Missing_Values_Inputation_Materi_Normalisasi_data.html">Missing Value</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Data_Preparation.html">Fase 3. Persiapan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modeling.html">Fase 4. Pemodelan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Fase 6. Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS_Pendat.html">UTS Analisa Data Kesuburan Tanah</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="TugasNaiveBayes.html">Tugas Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Decision_Tree.html">Tugas Decision Tree</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Random Forest</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -468,7 +485,7 @@ document.write(`
 <figure class="align-center" id="workflow-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/workflowrandomforest.png" src="../img/random-forest-kelulusan/workflowrandomforest.png" />
 <figcaption>
-<p><span class="caption-text">Workflow KNIME untuk klasifikasi Random Forest prediksi kelulusan mahasiswa</span><a class="headerlink" href="#workflow-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Workflow KNIME untuk klasifikasi Random Forest prediksi kelulusan mahasiswa</span><a class="headerlink" href="#workflow-rf-kelulusan" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>Workflow terdiri dari node-node berikut:</p>
 <ol class="arabic simple">
@@ -501,7 +518,7 @@ Table Partitioner
 <figure class="align-center" id="csv-reader-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/csvreaderforest.png" src="../img/random-forest-kelulusan/csvreaderforest.png" />
 <figcaption>
-<p><span class="caption-text">Node CSV Reader untuk membaca dataset</span><a class="headerlink" href="#csv-reader-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Node CSV Reader untuk membaca dataset</span><a class="headerlink" href="#csv-reader-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>CSV Reader</strong> digunakan untuk membaca file dataset:</p>
@@ -525,7 +542,7 @@ Table Partitioner
 <figure class="align-center" id="column-filter-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/collumfilterforest.png" src="../img/random-forest-kelulusan/collumfilterforest.png" />
 <figcaption>
-<p><span class="caption-text">Konfigurasi Column Filter</span><a class="headerlink" href="#column-filter-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Konfigurasi Column Filter</span><a class="headerlink" href="#column-filter-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>Column Filter</strong> digunakan untuk membuang kolom yang tidak diperlukan pada proses klasifikasi.</p>
@@ -583,7 +600,7 @@ Table Partitioner
 <figure class="align-center" id="partisi-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/partisiforest.png" src="../img/random-forest-kelulusan/partisiforest.png" />
 <figcaption>
-<p><span class="caption-text">Konfigurasi Table Partitioner</span><a class="headerlink" href="#partisi-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Konfigurasi Table Partitioner</span><a class="headerlink" href="#partisi-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>Table Partitioner</strong> digunakan untuk membagi dataset menjadi data training dan data testing.</p>
@@ -630,7 +647,7 @@ Table Partitioner
 <figure class="align-center" id="py-training-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/TrainingPythonScript.png" src="../img/random-forest-kelulusan/TrainingPythonScript.png" />
 <figcaption>
-<p><span class="caption-text">Konfigurasi Python Script untuk Training</span><a class="headerlink" href="#py-training-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Konfigurasi Python Script untuk Training</span><a class="headerlink" href="#py-training-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>Python Script</strong> pertama digunakan untuk melakukan training model Random Forest.</p>
@@ -717,7 +734,7 @@ Table Partitioner
 <figure class="align-center" id="py-testing-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/TestingPythonScriptPrediksi.png" src="../img/random-forest-kelulusan/TestingPythonScriptPrediksi.png" />
 <figcaption>
-<p><span class="caption-text">Konfigurasi Python Script untuk Testing</span><a class="headerlink" href="#py-testing-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Konfigurasi Python Script untuk Testing</span><a class="headerlink" href="#py-testing-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>Python Script</strong> kedua digunakan untuk melakukan prediksi pada data testing.</p>
@@ -784,7 +801,7 @@ Table Partitioner
 <figure class="align-center" id="scorer-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/scorerforest.png" src="../img/random-forest-kelulusan/scorerforest.png" />
 <figcaption>
-<p><span class="caption-text">Hasil Scorer</span><a class="headerlink" href="#scorer-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Hasil Scorer</span><a class="headerlink" href="#scorer-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Node <strong>Scorer</strong> digunakan untuk mengevaluasi performa model.</p>
@@ -844,7 +861,7 @@ Table Partitioner
 <figure class="align-center" id="akurasi-rf-kelulusan">
 <img alt="../img/random-forest-kelulusan/accuracyforest.png" src="../img/random-forest-kelulusan/accuracyforest.png" />
 <figcaption>
-<p><span class="caption-text">Hasil Akurasi Model</span><a class="headerlink" href="#akurasi-rf-kelulusan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Hasil Akurasi Model</span><a class="headerlink" href="#akurasi-rf-kelulusan" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Akurasi menunjukkan persentase prediksi yang benar dibandingkan dengan seluruh data testing.</p>
@@ -905,6 +922,15 @@ Table Partitioner
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas_Decision_Tree.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tugas Decision Tree C4.5 (Gain Ratio)</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
