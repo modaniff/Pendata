@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+aoi = {
+    "type": "Polygon",
+    "coordinates": [
+        [
+            [113.0634104, -7.127468],
+            [113.0911771, -7.070243],
+            [112.9622156, -7.112389],
+            [113.0634104, -7.127468]
+        ]
+    ]
+}
+
+s5post = connection.load_collection(
+    "SENTINEL_5P_L2",
+    temporal_extent=["2026-06-01", "2026-06-05"],
+    spatial_extent={
+        "west": 112.9622156,
+        "south": -7.127468,
+        "east": 113.0911771,
+        "north": -7.070243
+    },
+    bands=["NO2"]
+)
+
+s5p_no2_daily = s5post.aggregate_temporal_period(
+    reducer="mean",
+    period="day"
+)
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 13[39m
+[32m      1[39m aoi = {
+[32m      2[39m     [33m"[39m[33mtype[39m[33m"[39m: [33m"[39m[33mPolygon[39m[33m"[39m,
+[32m      3[39m     [33m"[39m[33mcoordinates[39m[33m"[39m: [
+[32m   (...)[39m[32m     10[39m     ]
+[32m     11[39m }
+[32m---> [39m[32m13[39m s5post = [43mconnection[49m.load_collection(
+[32m     14[39m     [33m"[39m[33mSENTINEL_5P_L2[39m[33m"[39m,
+[32m     15[39m     temporal_extent=[[33m"[39m[33m2026-06-01[39m[33m"[39m, [33m"[39m[33m2026-06-05[39m[33m"[39m],
+[32m     16[39m     spatial_extent={
+[32m     17[39m         [33m"[39m[33mwest[39m[33m"[39m: [32m112.9622156[39m,
+[32m     18[39m         [33m"[39m[33msouth[39m[33m"[39m: -[32m7.127468[39m,
+[32m     19[39m         [33m"[39m[33meast[39m[33m"[39m: [32m113.0911771[39m,
+[32m     20[39m         [33m"[39m[33mnorth[39m[33m"[39m: -[32m7.070243[39m
+[32m     21[39m     },
+[32m     22[39m     bands=[[33m"[39m[33mNO2[39m[33m"[39m]
+[32m     23[39m )
+[32m     25[39m s5p_no2_daily = s5post.aggregate_temporal_period(
+[32m     26[39m     reducer=[33m"[39m[33mmean[39m[33m"[39m,
+[32m     27[39m     period=[33m"[39m[33mday[39m[33m"[39m
+[32m     28[39m )
+
+[31mNameError[39m: name 'connection' is not defined
+
