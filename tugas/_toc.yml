@@ -26,3 +26,5 @@ chapters:
     title: Tugas Regresi Linier
   - file: Peramalan_NO2_Blega_Galis_Konang
     title: Peramalan NO2 Blega, Galis, Konang
+  - file: Skforecast
+    title: Tugas Skforecast
